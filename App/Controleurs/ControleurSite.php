@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controleurs;
@@ -13,14 +14,13 @@ class ControleurSite
 
     public function accueil(): void
     {
-        $tDonnees = array("contenu"=>"Je suis le contenu de la page d'accueil...");
-        echo App::getBlade()->run('accueil',$tDonnees);
+        $tDonnees = array("contenu" => "Je suis le contenu de la page d'accueil...");
+        echo App::getBlade()->run('accueil', $tDonnees);
     }
 
-    public function apropos():void
+    public function apropos(): void
     {
-        $tDonnees = array("contenu"=>"Je suis le contenu de la page à propos...");
-        echo App::getBlade()->run('apropos',$tDonnees);
+        $tDonnees = array("contenu" => "Je suis le contenu de la page à propos...");
+        echo App::getBlade()->run('apropos', $tDonnees);
     }
 }
-
