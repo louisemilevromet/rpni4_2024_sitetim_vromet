@@ -25,33 +25,28 @@
  ** listeInteractivite - Éléments interactifs
  */
 
-
-
-
-
 /****** Librairies ******/
 
 /** Normalize **/
-@import ''; // Adapter le lien vers votre fichier normalize dans node_module.
+@import "node_modules/normalize.css"; // Adapter le lien vers votre fichier normalize dans node_module.
 
 /**** UTILITAIRES ****/
 
 /** Variables **/
-@import 'utilitaires/variables';
+@import "utilitaires/variables";
 
 /** Mixins **/
-@import 'utilitaires/mixins';
+@import "utilitaires/mixins";
 
 /****** BASE ******/
 
 /** Typographie **/
-@import 'base/typo';
+@import "base/typo";
 
 /** Hyperliens **/
-@import 'base/hyperlien';
+@import "base/hyperlien";
 
 /** Boutons **/
-@import 'base/bouton';
+@import "base/bouton";
 
 /****** MODULES ******/
-
