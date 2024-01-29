@@ -1,0 +1,23 @@
+{
+  "name": "rpni4_2024_sitetim_vromet",
+  "version": "1.0.0",
+  "description": "Structure de départ pour le projet Site de la TIM 2024",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louisemilevromet/rpni4_2024_sitetim_vromet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/louisemilevromet/rpni4_2024_sitetim_vromet/issues"
+  },
+  "homepage": "https://github.com/louisemilevromet/rpni4_2024_sitetim_vromet#readme",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
