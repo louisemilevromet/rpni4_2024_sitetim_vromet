@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-/**
- * @author Prenom Nom courriel
- * @todo Lier les modules avec des instructions @import
- * @todo Compléter selon l'énoncé de l'exercice
- */
-
 /*
  * ------------------
  * TABLE DES MATIERES
@@ -30,11 +24,11 @@
 /** Général **/
 @import "layout/general";
 
+/** Cursor **/
+@import "base/cursor";
+
 /** Hero **/
 @import "base/hero";
-
-/** Normalize **/
-@import "node_modules/normalize.css";
 
 /**** UTILITAIRES ****/
 

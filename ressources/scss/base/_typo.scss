@@ -16,3 +16,15 @@ body {
   font-family: "Satochi", sans-serif;
   color: $white;
 }
+
+// Logo
+.hero__navbarcontainer__logo p {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+// MetaNav
+.hero__navbarcontainer__metanav a {
+  font-size: 1.2rem;
+  color: $white;
+}
