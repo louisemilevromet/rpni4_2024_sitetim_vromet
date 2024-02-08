@@ -27,8 +27,14 @@
 
 /****** Librairies ******/
 
+/** Général **/
+@import "layout/general";
+
+/** Hero **/
+@import "base/hero";
+
 /** Normalize **/
-@import "node_modules/normalize.css"; // Adapter le lien vers votre fichier normalize dans node_module.
+@import "node_modules/normalize.css";
 
 /**** UTILITAIRES ****/
 

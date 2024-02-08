@@ -1,0 +1,17 @@
+// layout/_general.scss
+@import "../utilitaires/variables"; // Notez l'omission du "_" et de l'extension
+// Vous pouvez maintenant utiliser la variable $black ici
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $black;
+  width: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+svg {
+  width: 1.8rem;
+}

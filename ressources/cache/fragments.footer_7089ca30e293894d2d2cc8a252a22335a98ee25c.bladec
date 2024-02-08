@@ -1,0 +1,4 @@
+<h3>
+ <h2>Pied de page</h2>
+ <a href="index.php?controleur=site&action=accueil">Page d'accueil</a>
+</h3>

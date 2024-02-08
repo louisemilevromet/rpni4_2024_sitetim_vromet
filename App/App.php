@@ -34,13 +34,13 @@ class App
                 $serveur = 'localhost';
                 $utilisateur = 'root';
                 $motDePasse = 'root'; // Pas mettre de mot de passe avec XAMP
-                $nomBd = 'maBdRpni4'; // À modifier...
+                $nomBd = '24_rpni4_site_tim'; // À modifier...
             } else {
                 // Paramètres de connexion d'une BD sur le serveur TIMUNIX
                 // À modifier...
                 $serveur = 'localhost';
-                $utilisateur = '24_rpni4_33'; // À modifier...
-                $motDePasse = 'sdf34jkh48$tu'; // À modifier...
+                $utilisateur = 'root'; // À modifier...
+                $motDePasse = 'root$tu'; // À modifier...
                 $nomBd = '24_rpni4_site_tim';
             }
             $chaineDSN = "mysql:dbname=$nomBd;host=$serveur";    // Data source name
@@ -99,8 +99,14 @@ class App
                 case 'accueil':
                     $objControleur->accueil();
                     break;
-                case 'apropos':
-                    $objControleur->apropos();
+                case 'projets':
+                    $objControleur->projets();
+                    break;
+                case 'stages':
+                    $objControleur->stages();
+                    break;
+                case 'contact':
+                    $objControleur->contact();
                     break;
                 default:
                     echo 'Erreur 404 - Action invalide';

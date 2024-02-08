@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+ <title>Technique d'intégration multiédia</title>
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="./liaisons/css/styles.css" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+ <header>
+ <?php echo $this->runChild('fragments.hero'); ?>
+ </header>
+
+ <main>
+ <?php echo $this->yieldContent('contenu'); ?>
+ </main>
+
+ <footer>
+ <?php echo $this->runChild('fragments.footer'); ?>
+ </footer>
+</body>
+
+</html>

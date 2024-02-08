@@ -14,13 +14,21 @@ class ControleurSite
 
     public function accueil(): void
     {
-        $tDonnees = array("contenu" => "Je suis le contenu de la page d'accueil...");
-        echo App::getBlade()->run('accueil', $tDonnees);
+        echo App::getBlade()->run('accueil');
     }
 
-    public function apropos(): void
+    public function projets(): void
     {
-        $tDonnees = array("contenu" => "Je suis le contenu de la page à propos...");
-        echo App::getBlade()->run('apropos', $tDonnees);
+        echo 'Projets';
+    }
+
+    public function stages(): void
+    {
+        echo 'Stages';
+    }
+
+    public function contact(): void
+    {
+        echo 'Contact';
     }
 }

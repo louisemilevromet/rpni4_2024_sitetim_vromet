@@ -1,0 +1,37 @@
+.hero {
+  height: 100vh;
+}
+
+.hero__navbar {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem;
+  align-items: center;
+}
+
+.hero__navbarcontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__navbarcontainer__logo {
+  height: 100%;
+}
+
+.hero__navbarcontainer__metanav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero__navbarcontainer__metanav svg {
+  height: 100%;
+}
