@@ -5,5 +5,5 @@
 @endsection
 
 @section('contenu')
-    <h1> Je suis la page d'accueil... </h1>
+    <h1> {{ $textes }} </h1>
 @endsection

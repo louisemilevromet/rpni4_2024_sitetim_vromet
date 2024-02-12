@@ -26,7 +26,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none;
 }
 
 html,
@@ -52,52 +51,17 @@ body {
 
 a {
   text-decoration: none;
-  cursor: none;
 }
 
 svg {
-  width: 1.8rem;
+  width: 1.5rem;
+}
+
+path {
+  fill: rgba(255, 255, 255, 0.6);
 }
 
 /** Cursor **/
-.cursor-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  background-color: white;
-  transition: width 0.4s, height 0.4s;
-}
-
-.cursor-outline {
-  width: 3rem;
-  height: 3rem;
-  border: 2px solid hsla(0, 0%, 100%, 0.5);
-  transition: width 0.4s, height 0.4s;
-}
-
-.cursor-dot,
-.cursor-outline {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: 999;
-  pointer-events: none;
-}
-
-.cursor-dot-hover {
-  width: 0.8rem;
-  height: 0.8rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid #545454;
-}
-
-.cursor-outline-hover {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid #ffffff;
-}
-
 /** Hero **/
 .hero {
   height: 100vh;
@@ -132,16 +96,34 @@ svg {
   list-style: none;
   justify-content: space-around;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .hero__navbarcontainer__metanav svg {
-  margin-top: 4px;
+  margin-top: 3px;
   height: 100%;
 }
 
-.hero__navbarcontainer__metanav path {
-  fill: #ffffff;
+.hero__container-titre {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.hero__container-titre {
+  position: absolute;
+  padding: 3rem;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.hero__container-scroll {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0%;
+  padding: 3rem;
 }
 
 /**** UTILITAIRES ****/
@@ -168,14 +150,34 @@ body {
   color: #ffffff;
 }
 
+h1 {
+  font-size: clamp(6rem, 8vw, 11rem);
+  text-transform: uppercase;
+}
+
 .hero__navbarcontainer__logo p {
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .hero__navbarcontainer__metanav a {
-  font-size: 1.2rem;
-  color: #ffffff;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+a {
+  --s: 0.1em; /* the thickness of the line */
+  --c: #fff; /* the color */
+  color: rgba(0, 0, 0, 0);
+  padding-bottom: var(--s);
+  background: linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%))/200% 100%, linear-gradient(var(--c) 0 0) 0% 100%/var(--_p, 0%) var(--s) no-repeat;
+  -webkit-background-clip: text, padding-box;
+  background-clip: text, padding-box;
+  transition: 0.5s;
+}
+
+a:hover {
+  --_p: 100%;
 }
 
 /** Hyperliens **/

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controleurs;
 
 use App\App;
+use App\Modeles\Textes;
 
 class ControleurSite
 {
@@ -14,21 +15,33 @@ class ControleurSite
 
     public function accueil(): void
     {
-        echo App::getBlade()->run('accueil');
+        $tDonnes = array(
+            "titrePage" => "techniques d'intégration multimédia"
+        );
+        echo App::getBlade()->run('accueil', $tDonnes);
     }
 
     public function projets(): void
     {
-        echo 'Projets';
+        $tDonnes = array(
+            "titrePage" => "projets",
+        );
+        echo App::getBlade()->run('projets', $tDonnes);
     }
 
     public function stages(): void
     {
-        echo 'Stages';
+        $tDonnes = array(
+            "titrePage" => "les stages",
+        );
+        echo App::getBlade()->run('stages', $tDonnes);
     }
 
     public function contact(): void
     {
-        echo 'Contact';
+        $tDonnes = array(
+            "titrePage" => "contact",
+        );
+        echo App::getBlade()->run('contact.contact', $tDonnes);
     }
 }

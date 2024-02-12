@@ -1,0 +1,122 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('contenu'); ?>
+ <form action="index.php?controleur=contact&action=inserer" method="POST" novalidate>
+
+ <fieldset class="formSection">
+ <fieldset class="ctnForm fNom">
+ <div class="nom">
+ <!-- Nom complet ---------------------->
+ <p>
+ <label for="nom_complet" class="screen-reader-only">Nom complet</label>
+ <input
+ class="<?php echo \htmlentities(isset($tValidation['NomComplet']['valide']) && $tValidation['NomComplet']['valide'] === false ? 'erreur' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ type="text" name="nom_complet" id="nom_complet" placeholder="Nom complet" required
+ pattern="[a-zA-ZÀ-ÿ' -]+" title="Caractères alphabétiques français seulement."
+ value="<?php echo \htmlentities(isset($tValidation['NomComplet']['valeur']) ? $tValidation['NomComplet']['valeur'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ </p>
+ <p class="erreur__message">
+ <?php echo \htmlentities(isset($tValidation['NomComplet']['message']) ? $tValidation['NomComplet']['message'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ </div>
+
+ <!-- Email ---------------------->
+ <p>
+ <label for="email" class="screen-reader-only">Email</label>
+ <input
+ class="<?php echo \htmlentities(isset($tValidation['Email']['valide']) && $tValidation['Email']['valide'] === false ? 'erreur' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ type="email" name="email" id="email" placeholder="Email" required
+ value="<?php echo \htmlentities(isset($tValidation['Email']['valeur']) ? $tValidation['Email']['valeur'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ </p>
+ <p class="erreur__message">
+ <?php echo \htmlentities(isset($tValidation['Email']['message']) ? $tValidation['Email']['message'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+
+ <!-- Destinataire ---------------------->
+ <p>
+ <label for="destinataire" class="screen-reader-only">Destinataire</label>
+ <select name="destinataire" id="destinataire" required>
+ <option value="">Choisir un destinataire...</option>
+ <option value="professeur1">Professeur 1</option>
+ <option value="professeur2">Professeur 2</option>
+ <option value="professeur3">Professeur 3</option>
+ <option value="professeur4">Professeur 4</option>
+ </select>
+ </p>
+
+ <!-- Téléphone ---------------------->
+ <p>
+ <label for="telephone" class="screen-reader-only">Téléphone</label>
+ <input
+ class="<?php echo \htmlentities(isset($tValidation['Telephone']['valide']) && $tValidation['Telephone']['valide'] === false ? 'erreur' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ type="tel" name="telephone" id="telephone" placeholder="Téléphone"
+ value="<?php echo \htmlentities(isset($tValidation['Telephone']['valeur']) ? $tValidation['Telephone']['valeur'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ </p>
+ <p class="erreur__message">
+ <?php echo \htmlentities(isset($tValidation['Telephone']['message']) ? $tValidation['Telephone']['message'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+
+ <!-- Sujet ---------------------->
+ <p>
+ <label for="sujet" class="screen-reader-only">Sujet</label>
+ <input
+ class="<?php echo \htmlentities(isset($tValidation['Sujet']['valide']) && $tValidation['Sujet']['valide'] === false ? 'erreur' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ type="text" name="sujet" id="sujet" placeholder="Sujet" required
+ value="<?php echo \htmlentities(isset($tValidation['Sujet']['valeur']) ? $tValidation['Sujet']['valeur'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ </p>
+ <p class="erreur__message">
+ <?php echo \htmlentities(isset($tValidation['Sujet']['message']) ? $tValidation['Sujet']['message'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+
+ <!-- Message ---------------------->
+ <p>
+ <label for="message" class="screen-reader-only">Message</label>
+ <textarea
+ class="<?php echo \htmlentities(isset($tValidation['Message']['valide']) && $tValidation['Message']['valide'] === false ? 'erreur' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ name="message" id="message" placeholder="Message" required><?php echo \htmlentities(isset($tValidation['Message']['valeur']) ? $tValidation['Message']['valeur'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?></textarea>
+ </p>
+ <p class="erreur__message">
+ <?php echo \htmlentities(isset($tValidation['Message']['message']) ? $tValidation['Message']['message'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+
+ <!-- Consentement ---------------------->
+ <p>
+ <label for="consentement" class="screen-reader-only">Consentement</label>
+ <input
+ class="<?php echo \htmlentities(isset($tValidation['Consentement']['valide']) && $tValidation['Consentement']['valide'] === false ? 'erreur' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ type="checkbox" name="consentement" id="consentement" required>
+ <span>J'accepte les conditions</span>
+ </p>
+ <p class="erreur__message">
+ <?php echo \htmlentities(isset($tValidation['Consentement']['message']) ? $tValidation['Consentement']['message'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+
+ <!-- Rétrocations ---------------------->
+ <p>
+ <label for="retrocations" class="screen-reader-only">Rétrocations</label>
+ <textarea
+ class="<?php echo \htmlentities(isset($tValidation['Retrocations']['valide']) && $tValidation['Retrocations']['valide'] === false ? 'erreur' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ name="retrocations" id="retrocations" placeholder="Rétrocations" required><?php echo \htmlentities(isset($tValidation['Retrocations']['valeur']) ? $tValidation['Retrocations']['valeur'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?></textarea>
+ </p>
+ <p class="erreur__message">
+ <?php echo \htmlentities(isset($tValidation['Retrocations']['message']) ? $tValidation['Retrocations']['message'] : ''??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+
+
+ <!-- Bouton Envoyer ---------------------->
+ <p>
+ <button type="submit">Envoyer</button>
+ </p>
+ </fieldset>
+ </fieldset>
+ </form>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('gabarit'); } ?>

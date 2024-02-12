@@ -31,14 +31,31 @@
   list-style: none;
   justify-content: space-around;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .hero__navbarcontainer__metanav svg {
-  margin-top: 4px;
+  margin-top: 3px;
   height: 100%;
 }
 
-.hero__navbarcontainer__metanav path {
-  fill: $white;
+.hero__container-titre {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+}
+.hero__container-titre {
+  position: absolute;
+  padding: 3rem;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.hero__container-scroll {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0%;
+  padding: 3rem;
 }

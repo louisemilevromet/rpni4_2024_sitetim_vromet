@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Controleurs\ControleurContact;
 use App\Controleurs\ControleurSite;
 use \PDO;
 use eftec\bladeone\BladeOne;
@@ -24,37 +25,45 @@ class App
         $this->routerRequete();
     }
 
-    public static function getPDO(): PDO
+    public static function getServeur(): string
     {
-        // Retourne l'objet de connexion et si nécessaire l'instancie
-        $pdo = null;
-        if (!isset(App::$refPdo)) {
-            if ($_SERVER['SERVER_NAME'] == 'localhost') {
-                // Paramètres de connexion d'un BD local dans MAMP
-                $serveur = 'localhost';
-                $utilisateur = 'root';
-                $motDePasse = 'root'; // Pas mettre de mot de passe avec XAMP
-                $nomBd = '24_rpni4_site_tim'; // À modifier...
-            } else {
-                // Paramètres de connexion d'une BD sur le serveur TIMUNIX
-                // À modifier...
-                $serveur = 'localhost';
-                $utilisateur = 'root'; // À modifier...
-                $motDePasse = 'root$tu'; // À modifier...
-                $nomBd = '24_rpni4_site_tim';
-            }
-            $chaineDSN = "mysql:dbname=$nomBd;host=$serveur";    // Data source name
+        // Vérifier la nature du serveur (local VS production)
+        $env = 'null';
+        if ((substr($_SERVER['HTTP_HOST'], 0, 9) == 'localhost') ||
+            (substr($_SERVER['HTTP_HOST'], 0, 7) == '199.202')
+        ) {
+            $env = 'serveur-local';
+        } else {
+            $env = 'serveur-production';
+        }
+        return $env;
+    }
 
-            // Tentative de connexion
+    public static function getPDO()
+    {
+        if (App::$refPdo == null) {
+            if (App::getServeur() === 'serveur-local') {
+                $serveur = (php_uname('s') === 'Darwin') ? 'localhost' : 'localhost:8889';
+                $utilisateur = 'root';
+                $motDePasse = 'root';
+                $nomBd = '24_rpni4_site_tim';
+                $chaineDSN = "mysql:dbname=$nomBd;host=$serveur"; // Data source name
+            } else if (App::getServeur() === 'serveur-production') {
+                //timunix3;
+                $serveur = 'localhost';
+                $utilisateur = '';
+                $motDePasse = '';
+                $nomBd = '';
+            }
+            $chaineDSN = "mysql:dbname=$nomBd;host=$serveur"; // Data source name
             $pdo = new PDO($chaineDSN, $utilisateur, $motDePasse);
             // Changement d'encodage des caractères UTF-8
             $pdo->exec("SET NAMES utf8");
             // Affectation des attributs de la connexion : Obtenir des rapports d'erreurs et d'exception avec errorInfo()
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } else {
-            $pdo = App::$refPdo;
+            App::$refPdo = $pdo;
         }
-        return $pdo;
+        return App::$refPdo;
     }
 
     public static function getBlade(): BladeOne
@@ -75,6 +84,7 @@ class App
         // Anatomie d'une URL. Exemple pour accéder à la page à propos:
         // Exemple:    http://localhost:8888/index.php?controleur=site&action=apropos
 
+        session_start();
         // Valeurs par défaut
         $urlControleur = 'site';
         $urlAction = 'accueil';
@@ -107,6 +117,19 @@ class App
                     break;
                 case 'contact':
                     $objControleur->contact();
+                    break;
+                default:
+                    echo 'Erreur 404 - Action invalide';
+            }
+        }
+        if ($urlControleur === 'contact') {
+            $objControleur = new ControleurContact();
+            switch ($urlAction) {
+                case 'creer':
+                    $objControleur->creer();
+                    break;
+                case 'inserer':
+                    $objControleur->inserer();
                     break;
                 default:
                     echo 'Erreur 404 - Action invalide';

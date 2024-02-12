@@ -1,6 +1,7 @@
 const cursorDot = document.querySelector(".cursor-dot");
 const cursorOutline = document.querySelector(".cursor-outline");
 const a = document.querySelectorAll("a");
+const svg = document.querySelectorAll("svg");
 
 console.log(a, "ici");
 
@@ -30,6 +31,19 @@ a.forEach((links) => {
     cursorOutline.style.animation = "none";
   });
   links.addEventListener("mouseleave", () => {
+    cursorDot.classList.remove("cursor-dot-hover");
+    cursorOutline.classList.remove("cursor-outline-hover");
+  });
+});
+
+svg.forEach((svg) => {
+  svg.addEventListener("mouseover", () => {
+    cursorDot.classList.add("cursor-dot-hover");
+    cursorOutline.classList.add("cursor-outline-hover");
+    cursorDot.style.animation = "none";
+    cursorOutline.style.animation = "none";
+  });
+  svg.addEventListener("mouseleave", () => {
     cursorDot.classList.remove("cursor-dot-hover");
     cursorOutline.classList.remove("cursor-outline-hover");
   });
