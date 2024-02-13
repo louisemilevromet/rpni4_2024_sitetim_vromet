@@ -26,6 +26,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none;
 }
 
 html,
@@ -51,6 +52,7 @@ body {
 
 a {
   text-decoration: none;
+  cursor: none;
 }
 
 svg {
@@ -62,6 +64,44 @@ path {
 }
 
 /** Cursor **/
+.cursor-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: white;
+  transition: width 0.4s, height 0.4s;
+}
+
+.cursor-outline {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid hsla(0, 0%, 100%, 0.5);
+  transition: width 0.4s, height 0.4s;
+}
+
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.cursor-dot-hover {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #545454;
+}
+
+.cursor-outline-hover {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ffffff;
+}
+
 /** Hero **/
 .hero {
   height: 100vh;
@@ -178,6 +218,10 @@ a {
 
 a:hover {
   --_p: 100%;
+}
+
+span.erreur_message {
+  color: #ec1e1e;
 }
 
 /** Hyperliens **/

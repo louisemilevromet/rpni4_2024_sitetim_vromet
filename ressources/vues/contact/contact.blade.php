@@ -2,107 +2,102 @@
 
 @section('contenu')
     <form action="index.php?controleur=contact&action=inserer" method="POST" novalidate>
+        <!-- Reste du formulaire -->
 
-        <fieldset class="formSection">
-            <fieldset class="ctnForm fNom">
-                <div class="nom">
-                    <!-- Nom ---------------------->
-                    <p><label for="nom">Nom</label>
-                        <input type="text" name="nom" id="nom" placeholder="Nom" required
-                            value="{{ isset($tValidation['nom']['valeur']) ? $tValidation['nom']['valeur'] : '' }}">
-                    </p>
+        <form action="index.php?controleur=contact&action=inserer" method="POST" novalidate>
+
+            <fieldset class="formSection">
+                <fieldset class="ctnForm fNom">
+                    <div class="nom">
+                        <!-- Nom ---------------------->
+                        <p><label for="nom">Nom</label>
+                            <input type="text" name="nom" id="nom" placeholder="Nom" required
+                                value="{{ isset($tValidation['nom']['valeur']) ? $tValidation['nom']['valeur'] : '' }}">
+                        </p>
+                        <span class="erreur_message">
+                            {{ isset($tValidation['nom']['message']) ? $tValidation['nom']['message'] : '' }}
+                        </span>
+                    </div>
+
+
+                    <!-- Courriel ---------------------->
                     <p>
-                        {{ isset($tValidation['nom']['message']) ? $tValidation['nom']['message'] : '' }}
+                        <label for="courriel" class="screen-reader-only">courriel</label>
+                        <input type="text" name="courriel" id="courriel" placeholder="Courriel" required
+                            value="{{ isset($tValidation['courriel']['valeur']) ? $tValidation['courriel']['valeur'] : '' }}">
                     </p>
-                </div>
+                    <span class="erreur_message">
+                        {{ isset($tValidation['courriel']['message']) ? $tValidation['courriel']['message'] : '' }}
+                    </span>
+
+                    <!-- Destinataire ---------------------->
+                    <p>
+                        <label for="destinataire" class="screen-reader-only">Destinataire</label>
+                        <select name="destinataire" id="destinataire" required>
+                            @foreach ($tResponsables as $Responsable)
+                                <option value="{{ $Responsable->getId() }}"> {{ $Responsable->getPrenomNom() }}</option>
+                            @endforeach
+                        </select>
+                    </p>
 
 
-                <!-- Courriel ---------------------->
-                <p>
-                    <label for="courriel" class="screen-reader-only">courriel</label>
-                    <input type="text" name="courriel" id="courriel" placeholder="Courriel" required
-                        value="{{ isset($tValidation['courriel']['valeur']) ? $tValidation['courriel']['valeur'] : '' }}">
-                </p>
-                <p class="erreur__message">
-                    {{ isset($tValidation['courriel']['message']) ? $tValidation['courriel']['message'] : '' }}
-                </p>
+                    <!-- Téléphone ---------------------->
+                    <p>
+                        <label for="telephone" class="screen-reader-only">Téléphone</label>
+                        <input
+                            class="{{ isset($tValidation['telephone']['valide']) && $tValidation['telephone']['valide'] === false ? 'erreur' : '' }}"
+                            type="tel" name="telephone" id="telephone" placeholder="Téléphone"
+                            value="{{ isset($tValidation['telephone']['valeur']) ? $tValidation['telephone']['valeur'] : '' }}">
+                    </p>
+                    <p class="erreur__message">
+                        {{ isset($tValidation['telephone']['message']) ? $tValidation['telephone']['message'] : '' }}
+                    </p>
 
-                <!-- Destinataire ---------------------->
-                <p>
-                    <label for="destinataire" class="screen-reader-only">Destinataire</label>
-                    <select name="destinataire" id="destinataire" required>
-                        <option value="">Choisir un destinataire...</option>
-                        <option value="professeur1">Professeur 1</option>
-                        <option value="professeur2">Professeur 2</option>
-                        <option value="professeur3">Professeur 3</option>
-                        <option value="professeur4">Professeur 4</option>
-                    </select>
-                </p>
+                    <!-- Sujet ---------------------->
+                    <p>
+                        <label for="sujet" class="screen-reader-only">Sujet</label>
+                        <input type="text" name="sujet" id="sujet" placeholder="Sujet" required
+                            value="{{ isset($tValidation['sujet']['valeur']) ? $tValidation['sujet']['valeur'] : '' }}">
+                    </p>
+                    <span class="erreur_message">
+                        {{ isset($tValidation['sujet']['message']) ? $tValidation['sujet']['message'] : '' }}
+                    </span>
 
-                <!-- Téléphone ---------------------->
-                <p>
-                    <label for="telephone" class="screen-reader-only">Téléphone</label>
-                    <input
-                        class="{{ isset($tValidation['Telephone']['valide']) && $tValidation['Telephone']['valide'] === false ? 'erreur' : '' }}"
-                        type="tel" name="telephone" id="telephone" placeholder="Téléphone"
-                        value="{{ isset($tValidation['Telephone']['valeur']) ? $tValidation['Telephone']['valeur'] : '' }}">
-                </p>
-                <p class="erreur__message">
-                    {{ isset($tValidation['Telephone']['message']) ? $tValidation['Telephone']['message'] : '' }}
-                </p>
+                    <!-- Message ---------------------->
+                    <p>
+                        <label for="contenu" class="screen-reader-only">Message</label>
+                        <input type="text" name="contenu" id="contenu" placeholder="Message" required
+                            value="{{ isset($tValidation['message']['valeur']) ? $tValidation['message']['valeur'] : '' }}">
+                    </p>
 
-                <!-- Sujet ---------------------->
-                <p>
-                    <label for="sujet" class="screen-reader-only">Sujet</label>
-                    <input
-                        class="{{ isset($tValidation['Sujet']['valide']) && $tValidation['Sujet']['valide'] === false ? 'erreur' : '' }}"
-                        type="text" name="sujet" id="sujet" placeholder="Sujet" required
-                        value="{{ isset($tValidation['Sujet']['valeur']) ? $tValidation['Sujet']['valeur'] : '' }}">
-                </p>
-                <p class="erreur__message">
-                    {{ isset($tValidation['Sujet']['message']) ? $tValidation['Sujet']['message'] : '' }}
-                </p>
+                    <span class="erreur_message">
+                        {{ isset($tValidation['message']['message']) ? $tValidation['message']['message'] : '' }}
+                    </span>
 
-                <!-- Message ---------------------->
-                <p>
-                    <label for="message" class="screen-reader-only">Message</label>
-                    <textarea
-                        class="{{ isset($tValidation['Message']['valide']) && $tValidation['Message']['valide'] === false ? 'erreur' : '' }}"
-                        name="message" id="message" placeholder="Message" required>{{ isset($tValidation['Message']['valeur']) ? $tValidation['Message']['valeur'] : '' }}</textarea>
-                </p>
-                <p class="erreur__message">
-                    {{ isset($tValidation['Message']['message']) ? $tValidation['Message']['message'] : '' }}
-                </p>
+                    <!-- Consentement ---------------------->
 
-                <!-- Consentement ---------------------->
-                <p>
-                    <label for="consentement" class="screen-reader-only">Consentement</label>
-                    <input
-                        class="{{ isset($tValidation['Consentement']['valide']) && $tValidation['Consentement']['valide'] === false ? 'erreur' : '' }}"
-                        type="checkbox" name="consentement" id="consentement" required>
-                    <span>J'accepte les conditions</span>
-                </p>
-                <p class="erreur__message">
-                    {{ isset($tValidation['Consentement']['message']) ? $tValidation['Consentement']['message'] : '' }}
-                </p>
+                    <p>
+                        <?php
+                        $acceptationConsentement = isset($tValidation['consentement']['valeur']) ? $tValidation['consentement']['valeur'] : null;
+                        ?>
+                        <input name="consentement" id="consentement" type="checkbox" <?php echo $acceptationConsentement === 'on' ? 'checked' : ''; ?> required>
+                        <label for="consentement"> J'accepte les consentements</label>
+                    </p>
+                    <p class="erreur__message">
+                        {{ isset($tValidation['consentement']['message']) ? $tValidation['consentement']['message'] : '' }}
+                    </p>
 
-                <!-- Rétrocations ---------------------->
-                <p>
-                    <label for="retrocations" class="screen-reader-only">Rétrocations</label>
-                    <textarea
-                        class="{{ isset($tValidation['Retrocations']['valide']) && $tValidation['Retrocations']['valide'] === false ? 'erreur' : '' }}"
-                        name="retrocations" id="retrocations" placeholder="Rétrocations" required>{{ isset($tValidation['Retrocations']['valeur']) ? $tValidation['Retrocations']['valeur'] : '' }}</textarea>
-                </p>
-                <p class="erreur__message">
-                    {{ isset($tValidation['Retrocations']['message']) ? $tValidation['Retrocations']['message'] : '' }}
-                </p>
+                    @php
+                        echo '<pre>';
+                        print_r($tValidation);
+                        echo '</pre>';
+                    @endphp
 
-
-                <!-- Bouton Envoyer ---------------------->
-                <p>
-                    <button type="submit">Envoyer</button>
-                </p>
+                    <!-- Bouton Envoyer ---------------------->
+                    <p>
+                        <button type="submit">Envoyer</button>
+                    </p>
+                </fieldset>
             </fieldset>
-        </fieldset>
-    </form>
-@endsection
+        </form>
+    @endsection

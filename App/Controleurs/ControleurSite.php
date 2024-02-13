@@ -39,9 +39,6 @@ class ControleurSite
 
     public function contact(): void
     {
-        $tDonnes = array(
-            "titrePage" => "contact",
-        );
-        echo App::getBlade()->run('contact.contact', $tDonnes);
+        echo App::getBlade()->run('contact.contact');
     }
 }

@@ -41,51 +41,44 @@ class Validateur
         exit();
     }
 
-    // public static function validerChampRadios($unChampRadio, $identifiant)
-    // {
-    //     $contenuBruteFichierJson = file_get_contents("../ressources/lang/fr_CA.UTF-8/messagesInscriptionValidation.json");
-    //     // Convertir en tableau associatif
-    //     $tMessagesJson = json_decode($contenuBruteFichierJson, true);
-    //     $message = '';
-    //     $estValide = false;
+    public static function validerCheckbox($unCheckbox, $identifiant)
+    {
+        $contenuBruteFichierJson = file_get_contents("../ressources/lang/fr_CA.UTF-8/messagesContactValidation.json");
+        // Convertir en tableau associatif
+        $tMessagesJson = json_decode($contenuBruteFichierJson, true);
+        $message = '';
+        $estValide = false;
 
-    //     if (isset($unChampRadio)) {
-    //         $estValide = true;
-    //     } else {
-    //         $estValide = false;
-    //         $message = $tMessagesJson[$identifiant]['vide'];
-    //         header('Location: index.php?controleur=contact&action=creer');
-    //     }
-    //     $identifiant = array(
-    //         'valeur' => $_POST[$identifiant],
-    //         'valide' => $estValide,
-    //         'message' => $message
-    //     );
-    //     return $identifiant;
-    //     exit();
-    // }
+        if (isset($unCheckbox)) {
+            $estValide = true;
+        } else {
+            $estValide = false;
+            $message = $tMessagesJson[$identifiant]['erreurs']['vide'];
+            header('Location: index.php?controleur=contact&action=creer');
+        }
+        $identifiant = array(
+            'valeur' => $_POST[$identifiant],
+            'valide' => $estValide,
+            'message' => $message
+        );
+        return $identifiant;
+        exit();
+    }
 
-    // public static function validerCheckbox($unCheckbox, $identifiant)
-    // {
-    //     $contenuBruteFichierJson = file_get_contents("../ressources/lang/fr_CA.UTF-8/messagesInscriptionValidation.json");
-    //     // Convertir en tableau associatif
-    //     $tMessagesJson = json_decode($contenuBruteFichierJson, true);
-    //     $message = '';
-    //     $estValide = false;
+    public static function validerTousChamps($tChamps)
+    {
+        $contenuBruteFichierJson = file_get_contents("../ressources/lang/fr_CA.UTF-8/messagesContactValidation.json");
+        // Convertir en tableau associatif
+        $tMessagesJson = json_decode($contenuBruteFichierJson, true);
+        $message = '';
 
-    //     if (isset($unCheckbox)) {
-    //         $estValide = true;
-    //     } else {
-    //         $estValide = false;
-    //         $message = $tMessagesJson[$identifiant]['vide'];
-    //         header('Location: index.php?controleur=inscription&action=creer');
-    //     }
-    //     $identifiant = array(
-    //         'valeur' => $_POST[$identifiant],
-    //         'valide' => $estValide,
-    //         'message' => $message
-    //     );
-    //     return $identifiant;
-    //     exit();
-    // }
+        if ($tChamps['nom']['valide'] == false && $tChamps['courriel']['valide'] == false && $tChamps['telephone']['valide'] == false && $tChamps['sujet']['valide'] == false && $tChamps['message']['valide'] == false && $tChamps['consentement']['valide'] == false) {
+            $message = $tMessagesJson['retroaction']['courriel']['Veuillez compléter le formulaire.'];
+            header('Location: index.php?controleur=contact&action=creer');
+        } else {
+            $message = $tMessagesJson['retroaction']['courriel']['envoyer'];
+            header('Location: index.php?controleur=site&action=accueil');
+        }
+        return $message;
+    }
 }

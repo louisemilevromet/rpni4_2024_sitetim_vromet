@@ -14,7 +14,7 @@ class Messages
     private string $prenom_nom = "";
     private string $courriel = "";
     private string $telephone = "";
-    private string $consentement = "";
+    private bool $consentement = false;
     private string $sujet = "";
     private string $contenu = "";
     private string $dateheure_creation = "";
@@ -28,13 +28,19 @@ class Messages
 
     public function inserer(): void
     {
-        $chaineSQL = 'INSERT INTO messages (prenom_nom, courriel)
-        VALUES (:prenom_nom, :courriel)';
+        $chaineSQL = 'INSERT INTO messages (prenom_nom, courriel, telephone, consentement, sujet, contenu, dateheure_creation, responsable_id)
+        VALUES (:prenom_nom, :courriel, :telephone, :consentement, :sujet, :contenu, :dateheure_creation, :responsable_id)';
 
         $requetePreparee = App::getPDO()->prepare($chaineSQL);
 
         $requetePreparee->bindParam(':prenom_nom', $this->prenom_nom, PDO::PARAM_STR);
         $requetePreparee->bindParam(':courriel', $this->courriel, PDO::PARAM_STR);
+        $requetePreparee->bindParam(':telephone', $this->telephone, PDO::PARAM_STR);
+        $requetePreparee->bindParam(':consentement', $this->consentement, PDO::PARAM_INT);
+        $requetePreparee->bindParam(':sujet', $this->sujet, PDO::PARAM_STR);
+        $requetePreparee->bindParam(':contenu', $this->contenu, PDO::PARAM_STR);
+        $requetePreparee->bindParam(':dateheure_creation', $this->dateheure_creation, PDO::PARAM_STR);
+        $requetePreparee->bindParam(':responsable_id', $this->responsable_id, PDO::PARAM_INT);
 
         // Exécuter la requête
         $requetePreparee->execute();
@@ -50,12 +56,17 @@ class Messages
         $this->courriel = $courriel;
     }
 
+    public function setDestinataire(int $responsable_id): void
+    {
+        $this->responsable_id = $responsable_id;
+    }
+
     public function setTelephone(string $telephone): void
     {
         $this->telephone = $telephone;
     }
 
-    public function setConsentement(string $consentement): void
+    public function setConsentement(bool $consentement): void
     {
         $this->consentement = $consentement;
     }
@@ -65,9 +76,9 @@ class Messages
         $this->sujet = $sujet;
     }
 
-    public function setContenu(string $contenu): void
+    public function setMessage(string $message): void
     {
-        $this->contenu = $contenu;
+        $this->contenu = $message;
     }
 
     public function setDateheure_creation(string $dateheure_creation): void
