@@ -44,6 +44,8 @@ class Messages
 
         // Exécuter la requête
         $requetePreparee->execute();
+
+        (header('Location: index.php?controleur=contact&action=creer'));
     }
 
     public function setNom(string $prenom_nom): void

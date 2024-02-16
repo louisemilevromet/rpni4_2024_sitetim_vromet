@@ -51,9 +51,9 @@ class App
             } else if (App::getServeur() === 'serveur-production') {
                 //timunix3;
                 $serveur = 'localhost';
-                $utilisateur = '';
-                $motDePasse = '';
-                $nomBd = '';
+                $utilisateur = '24_rpni4_18';
+                $motDePasse = 'dhwdjh238tDFQW$';
+                $nomBd = '24_rpni4_18';
             }
             $chaineDSN = "mysql:dbname=$nomBd;host=$serveur"; // Data source name
             $pdo = new PDO($chaineDSN, $utilisateur, $motDePasse);

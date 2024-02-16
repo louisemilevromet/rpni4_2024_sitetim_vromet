@@ -65,20 +65,18 @@ class Validateur
         exit();
     }
 
-    public static function validerTousChamps($tChamps)
+    public static function validerTousChamps($nom, $courriel, $telephone, $sujet, $message, $consentement, $humain)
     {
         $contenuBruteFichierJson = file_get_contents("../ressources/lang/fr_CA.UTF-8/messagesContactValidation.json");
         // Convertir en tableau associatif
         $tMessagesJson = json_decode($contenuBruteFichierJson, true);
-        $message = '';
 
-        if ($tChamps['nom']['valide'] == false && $tChamps['courriel']['valide'] == false && $tChamps['telephone']['valide'] == false && $tChamps['sujet']['valide'] == false && $tChamps['message']['valide'] == false && $tChamps['consentement']['valide'] == false) {
-            $message = $tMessagesJson['retroaction']['courriel']['Veuillez compléter le formulaire.'];
-            header('Location: index.php?controleur=contact&action=creer');
+        if ($nom == '' && $courriel == '' && $telephone == '' && $sujet == '' && $message == '' && $consentement == false && $humain == false) {
+            return $tMessagesJson['retroactions']['courriel']['completer'];
+        } else if ($nom != '' && $courriel != '' && $telephone != '' && $sujet != '' && $message != '' && $consentement == true && $humain == true) {
+            return $tMessagesJson['retroactions']['courriel']['envoyer'];
         } else {
-            $message = $tMessagesJson['retroaction']['courriel']['envoyer'];
-            header('Location: index.php?controleur=site&action=accueil');
+            return $tMessagesJson['retroactions']['courriel']['avorter'];
         }
-        return $message;
     }
 }

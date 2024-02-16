@@ -36,6 +36,13 @@ body {
   height: 100%;
 }
 
+main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
 .background {
   width: 100%;
   left: 0;
@@ -220,7 +227,7 @@ a:hover {
   --_p: 100%;
 }
 
-span.erreur_message {
+span.erreur__message {
   color: #ec1e1e;
 }
 
