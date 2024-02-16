@@ -13,28 +13,9 @@ html,
 body {
   background-color: $black;
   width: 100%;
-  height: 100%;
-}
-
-main {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.background {
-  width: 100%;
-  left: 0;
-  top: 0;
-  position: absolute;
-  z-index: 0;
-}
-
-.background__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background-image: url("../images/Background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 a {
@@ -44,6 +25,11 @@ a {
 
 svg {
   width: 1.5rem;
+  height: auto;
+}
+
+.svg__no-click {
+  pointer-events: none;
 }
 
 path {

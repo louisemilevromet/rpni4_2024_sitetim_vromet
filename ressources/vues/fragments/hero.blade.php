@@ -54,3 +54,5 @@
             </g>
         </svg>
     </div>
+    <div class="hero__line">
+    </div>

@@ -54,6 +54,7 @@ class ControleurContact
 
     public function inserer(): void
     {
+
         // Regex nom
         $regexNom = "/^[a-zA-ZÀ-ÿ\- ]+$/u";
         // Regex email
@@ -88,6 +89,8 @@ class ControleurContact
         // Associer le tableau de validation à la session
         $_SESSION['tValidation'] = $tValidation;
 
+
+
         // Si tout est valide, on insère dans la base de données
         if ($tNom['valide'] && $tCourriel['valide'] && $tTelephone['valide'] && $tSujet['valide'] && $tMessage['valide'] && $tConsentement['valide'] && $tHumain['valide']) {
             $newMessages = new Messages();
@@ -100,6 +103,9 @@ class ControleurContact
             $newMessages->setDateheure_creation(date('Y-m-d H:i:s'));
             $newMessages->setDestinataire(intval($_POST['destinataire']));
             $newMessages->inserer();
+
+            // On envoie un courriel si tout est valide
+            $this->envoyerCourriel();
 
             // Supprimer les tableau de tValidation de la session
             unset($_SESSION['tValidation']['nom']);
@@ -116,10 +122,6 @@ class ControleurContact
     // Function qui envoie un courriel
     private function envoyerCourriel()
     {
-        // PRÉPARER LA VUE DU COURRIEL
-        $tDonnees = ["contenuCourriel" => "Je suis le contenu du courriel..."];
-        $vueTexte = App::getBlade()->run('courriels.messages.courrielTexte', $tDonnees); // Vue par défaut pour client low tech
-        $vueHtml =  App::getBlade()->run('courriels.messages.courrielHtml', $tDonnees); // Vue utilisée si supportée par le client
 
         $courriel = new Email();
         $courriel->from('webwiseconsolidate@gmail.com')
@@ -128,9 +130,9 @@ class ControleurContact
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
-            ->subject('Test courriel avec le serveur SMTP de Gmail.')
-            ->text($vueTexte)
-            ->html($vueHtml);
+            ->subject($_POST['sujet'])
+            ->text($_POST['message']);
+
 
         // ENVOYER LE COURRIEL PAR LE SERVEUR SMTP DE GOOGLE
         //       Remplacer 111111 par: Votre nouvelle adresse courriel Gmail.

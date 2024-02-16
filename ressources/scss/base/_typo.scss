@@ -19,7 +19,7 @@ body {
 
 //H1
 h1 {
-  font-size: clamp(6rem, 8vw, 11rem);
+  font-size: clamp(4rem, 8vw, 11rem);
   text-transform: uppercase;
 }
 
@@ -54,6 +54,5 @@ a:hover {
 }
 
 span.erreur__message {
-  // À CHANGER dans le futur
-  color: #ec1e1e;
+  color: rgba($red, 0.8);
 }

@@ -1,0 +1,13 @@
+button {
+  height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  border-radius: $border-radius;
+  border: 2px solid rgba($white, 0.3);
+  background-color: transparent;
+
+  color: $white;
+}

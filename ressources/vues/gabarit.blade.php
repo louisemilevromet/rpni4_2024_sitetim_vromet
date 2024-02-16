@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <div class="cursor-dot"> </div>
     <div class="cursor-outline"></div>
     <header>
@@ -24,8 +25,7 @@
     <footer>
         @include('fragments.footer')
     </footer>
-    @include('fragments.background')
-</body>
 
+</body>
 
 </html>
