@@ -71,9 +71,9 @@ class Validateur
         // Convertir en tableau associatif
         $tMessagesJson = json_decode($contenuBruteFichierJson, true);
 
-        if ($nom == '' && $courriel == '' && $telephone == '' && $sujet == '' && $message == '' && $consentement == false && $humain == false) {
+        if ($nom == '' && $courriel == '' && $telephone['valide'] == false && $sujet == '' && $message == '' && $consentement['valide'] == false && $humain == false) {
             return $tMessagesJson['retroactions']['courriel']['completer'];
-        } else if ($nom != '' && $courriel != '' && $telephone != '' && $sujet != '' && $message != '' && $consentement == true && $humain == true) {
+        } else if ($nom != '' && $courriel != '' && $telephone['valide'] == true && $sujet != '' && $message != '' && $consentement['valide'] == true && $humain == true) {
             return $tMessagesJson['retroactions']['courriel']['envoyer'];
         } else {
             return $tMessagesJson['retroactions']['courriel']['avorter'];

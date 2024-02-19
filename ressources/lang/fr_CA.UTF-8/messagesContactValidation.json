@@ -48,8 +48,8 @@
   "telephone": {
     "label": "Téléphone",
     "erreurs": {
-      "vide": "Veuillez entrer votre numéro de téléphone (format:123 456-7890).",
-      "pattern": "Veuillez entrer un numéro de téléphone dans un format valide: 123 456-7890."
+      "vide": "Veuillez entrer votre numéro de téléphone (format:4188761122).",
+      "pattern": "Veuillez entrer un numéro de téléphone dans un format valide: 4188761122."
     }
   },
   "retroactions": {

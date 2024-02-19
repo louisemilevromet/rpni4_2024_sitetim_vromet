@@ -191,6 +191,11 @@ select {
   padding-left: 1rem;
 }
 
+span {
+  display: contents;
+  color: rgba(236, 30, 30, 0.8);
+}
+
 input.erreur {
   background-color: rgba(236, 30, 30, 0.2);
 }
@@ -240,7 +245,7 @@ form {
 }
 
 .form__telephone-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 1rem;
 }
@@ -264,14 +269,14 @@ form {
 }
 
 .form__consentement-container-plus-erreur {
-  display: flex;
+  display: contents;
   flex-direction: column;
   width: 60%;
   gap: 1rem;
 }
 
 .form__consentement-container {
-  display: flex;
+  display: none;
   justify-content: flex-start;
   flex-direction: row;
   gap: 1rem;
@@ -296,6 +301,12 @@ form {
   flex-direction: row;
   gap: 1rem;
   align-items: center;
+}
+
+.nom__message,
+.courriel__message erreur {
+  color: #ec1e1e;
+  font-size: 0.8rem;
 }
 
 /**** UTILITAIRES ****/
@@ -350,10 +361,6 @@ a {
 
 a:hover {
   --_p: 100%;
-}
-
-span.erreur__message {
-  color: rgba(236, 30, 30, 0.8);
 }
 
 /** Hyperliens **/

@@ -4,8 +4,7 @@ const a = document.querySelectorAll("a");
 const svg = document.querySelectorAll("svg");
 const inputs = document.querySelectorAll("input");
 const buttons = document.querySelectorAll("button");
-
-console.log(a, "ici");
+const selects = document.querySelectorAll("select");
 
 const cursor = (e) => {
   const posX = e.clientX;
@@ -72,6 +71,19 @@ buttons.forEach((button) => {
     cursorOutline.style.animation = "none";
   });
   button.addEventListener("mouseleave", () => {
+    cursorDot.classList.remove("cursor-dot-hover");
+    cursorOutline.classList.remove("cursor-outline-hover");
+  });
+});
+
+selects.forEach((select) => {
+  select.addEventListener("mouseover", () => {
+    cursorDot.classList.add("cursor-dot-hover");
+    cursorOutline.classList.add("cursor-outline-hover");
+    cursorDot.style.animation = "none";
+    cursorOutline.style.animation = "none";
+  });
+  select.addEventListener("mouseleave", () => {
     cursorDot.classList.remove("cursor-dot-hover");
     cursorOutline.classList.remove("cursor-outline-hover");
   });

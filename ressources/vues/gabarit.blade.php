@@ -5,7 +5,11 @@
     <title>Technique d'intégration multiédia</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./liaisons/css/styles.css" />
-    <script src="./liaisons/js/cursor.js" defer></script>
+    <script defer src="./liaisons/js/cursor.js"></script>
+    <script type="module" src="./liaisons/js/validation.js" defer></script>
+    <script>
+        validation.chargeJSON('liaisons/json/messagesContactValidation.json')
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </head>

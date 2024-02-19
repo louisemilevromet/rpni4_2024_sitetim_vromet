@@ -55,6 +55,7 @@ class ControleurContact
     public function inserer(): void
     {
 
+
         // Regex nom
         $regexNom = "/^[a-zA-ZÀ-ÿ\- ]+$/u";
         // Regex email
@@ -64,15 +65,24 @@ class ControleurContact
         // Regex sujet/message
         $regexSujet = "/^.+$/";
 
+        if (isset($_POST['telephone']) && $_POST['telephone'] != '') {
+            $tTelephone = Validateur::validerChampTexte($_POST['telephone'], $regexTelephone, 'telephone');
+        } else {
+            $tTelephone = array('valide' => true, 'valeur' => '');
+        }
+
+        if (isset($_POST['consentement']) && $_POST['consentement'] != '') {
+            $tConsentement = Validateur::validerCheckbox($_POST['consentement'], 'consentement');
+        } else {
+            $tConsentement = array('valide' => true, 'valeur' => '');
+        }
+
         $tNom = Validateur::validerChampTexte($_POST['nom'], $regexNom, 'nom');
         $tCourriel = Validateur::validerChampTexte($_POST['courriel'], $regexCourriel, 'courriel');
-        $tTelephone = Validateur::validerChampTexte($_POST['telephone'], $regexTelephone, 'telephone');
         $tSujet = Validateur::validerChampTexte($_POST['sujet'], $regexSujet, 'sujet');
         $tMessage = Validateur::validerChampTexte($_POST['message'], $regexSujet, 'message');
-        $tConsentement = Validateur::validerCheckbox($_POST['consentement'], 'consentement');
         $tHumain = Validateur::validerCheckbox($_POST['humain'], 'humain');
-        $tRetroactions = Validateur::validerTousChamps($_POST['nom'], $_POST['courriel'], $_POST['telephone'], $_POST['sujet'], $_POST['message'], $_POST['consentement'], $_POST['humain']);
-
+        $tRetroactions = Validateur::validerTousChamps($_POST['nom'], $_POST['courriel'], $tTelephone, $_POST['sujet'], $_POST['message'], $tConsentement, $_POST['humain']);
 
         $tValidation = array(
             'nom' => $tNom,
@@ -126,18 +136,10 @@ class ControleurContact
         $courriel = new Email();
         $courriel->from('webwiseconsolidate@gmail.com')
             ->to('webwiseconsolidate@gmail.com')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
             ->subject($_POST['sujet'])
             ->text($_POST['message']);
 
-
-        // ENVOYER LE COURRIEL PAR LE SERVEUR SMTP DE GOOGLE
-        //       Remplacer 111111 par: Votre nouvelle adresse courriel Gmail.
-        //       Remplacer 222222 par: Le mot de passe applicatif de sécurité généré dans votre nouveau compte Google.
-        //                             Pour tester l'erreur d'envoi: mettre un mot de passe bidon...
         $transport = Transport::fromDsn('smtp://webwiseconsolidate@gmail.com:pcfzjwkbtgqgujmy@smtp.gmail.com:587');
         $mailer = new Mailer($transport);
         $bilan = 'OK';
