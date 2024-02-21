@@ -1,0 +1,37 @@
+.container__container-stages {
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
+}
+
+.container__container-titre {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container__container-info {
+  display: none;
+}
+
+.container__container-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.container__container-infos {
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
+}
+
+.line {
+  bottom: 0;
+  width: 100%;
+  border-bottom: 1px solid $white;
+}

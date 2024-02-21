@@ -38,7 +38,6 @@ let validation = {
     this.refFormulaire
       .querySelector("#courriel")
       .addEventListener("blur", this.validerChampTexte.bind(this));
-
     this.refFormulaire
       .querySelector("#telephone")
       .addEventListener("blur", this.validerChampTexte.bind(this));
@@ -49,14 +48,18 @@ let validation = {
       .querySelector("#message")
       .addEventListener("blur", this.validerChampTexte.bind(this));
     this.refFormulaire
+      .querySelector("#consentement")
+      .addEventListener("blur", this.validerCheckbox.bind(this));
+    this.refFormulaire
       .querySelector("#humain")
       .addEventListener("blur", this.validerCheckbox.bind(this));
 
     this.tValide["nom"] = false;
     this.tValide["courriel"] = false;
-    this.tValide["telephone"] = false;
+    this.tValide["telephone"] = true;
     this.tValide["sujet"] = false;
     this.tValide["message"] = false;
+    this.tValide["consentement"] = true;
     this.tValide["humain"] = false;
   },
 
@@ -66,6 +69,18 @@ let validation = {
         "flex";
       document.querySelector(".form__consentement-container").style.display =
         "flex";
+
+      document.getElementById("telephone").required = true;
+      document.getElementById("consentement").required = true;
+
+      this.tValide["telephone"] = false;
+      this.tValide["consentement"] = false;
+    } else {
+      this.tValide["telephone"] = true;
+      this.tValide["consentement"] = true;
+
+      document.getElementById("telephone").required = false;
+      document.getElementById("consentement").required = false;
     }
   },
 
@@ -181,6 +196,9 @@ let validation = {
     // si le formulaire n'est pas valide, on annule la soumission du formulaire de l'événement submit
     if (valide === false) {
       evenement.preventDefault();
+      // this.afficherMessageErreurGlobal(
+      //   this.tErreurs["retroactions"]["courriel"]["avorter"]
+      // );
     }
   },
 
@@ -192,7 +210,10 @@ let validation = {
    */
   validerSiVide: function (objCible) {
     let valide = false; //false = champ vide
-    if (objCible.value === "" || !objCible.checked) {
+    if (
+      objCible.value === "" ||
+      (objCible.type === "checkbox" && !objCible.checked)
+    ) {
       valide = true; //si false, champ contient quelque chose
     }
     return valide;
@@ -207,6 +228,19 @@ let validation = {
     let nom = "err_" + objCible.getAttribute("id");
     document.getElementById(nom).innerHTML = message;
     objCible.classList.add("erreur");
+  },
+
+  /**
+   * Méthode d'affichage du message d'erreur global
+   * @param objCible
+   * @param message
+   */
+
+  afficherMessageErreurGlobal: function (message) {
+    let divRetro = document.getElementById("container-erreur_message");
+    divRetro.style.display = "flex";
+    let messageErreur = document.getElementById("err_retro");
+    messageErreur.innerHTML = message;
   },
 
   /**

@@ -1,14 +1,18 @@
 @extends('gabarit')
 
 @section('contenu')
-    <div class="form-container">
+    <div class="container">
 
         <form action="index.php?controleur=contact&action=inserer" method="POST" class="form" id="form">
             @if (isset($tValidation['retroactions']) && $tValidation['retroactions'] !== '')
-                <div class="container-erreur_message">
-                    <span class="retro__message.erreur">{{ $tValidation['retroactions'] }}</span>
+                <div class="container-retro_message">
+                    <span class="retro__message-correct">{{ $tValidation['retroactions'] }}</span>
                 </div>
             @endif
+
+            <div class="container-erreur_messageJS" id="container-erreur_message">
+                <span id="err_retro"></span>
+            </div>
 
             <div class="form__nom-container">
                 <label for="nom" id="label-nom">Nom complet *</label>
@@ -20,7 +24,7 @@
 
                 <span id="err_nom"></span>
 
-                <input type="text" name="nom" id="nom" pattern="^[a-zA-ZÀ-ÿ -/']+$"
+                <input type="text" name="nom" id="nom" pattern="^[a-zA-ZÀ-ÿ -/']+$" required
                     class="{{ isset($tValidation['nom']['valide']) && $tValidation['nom']['valide'] === false ? 'erreur' : '' }}"
                     value="{{ isset($tValidation['nom']['valeur']) ? $tValidation['nom']['valeur'] : '' }}">
             </div>
@@ -36,6 +40,7 @@
                 <span id="err_courriel"></span>
 
                 <input type="text" name="courriel" id="courriel" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,4})+)$"
+                    required
                     class="{{ isset($tValidation['courriel']['valide']) && $tValidation['courriel']['valide'] === false ? 'erreur' : '' }}"
                     value="{{ isset($tValidation['courriel']['valeur']) ? $tValidation['courriel']['valeur'] : '' }}">
             </div>
@@ -75,7 +80,7 @@
                 <span id="err_sujet"></span>
 
 
-                <input type="text" name="sujet" id="sujet" pattern="^[a-zA-ZÀ-ÿ]+$"
+                <input type="text" name="sujet" id="sujet" pattern="^[a-zA-ZÀ-ÿ]+$" required
                     class="{{ isset($tValidation['sujet']['valide']) && $tValidation['sujet']['valide'] === false ? 'erreur' : '' }}"
                     value="{{ isset($tValidation['sujet']['valeur']) ? $tValidation['sujet']['valeur'] : '' }}">
             </div>
@@ -90,7 +95,7 @@
 
                 <span id="err_message"></span>
 
-                <input type="text" name="message" id="message"
+                <input type="text" name="message" id="message" required
                     class="{{ isset($tValidation['message']['valide']) && $tValidation['message']['valide'] === false ? 'erreur' : '' }}"
                     value="{{ isset($tValidation['message']['valeur']) ? $tValidation['message']['valeur'] : '' }}">
             </div>
@@ -104,7 +109,8 @@
                     <input name="consentement" id="consentement" type="checkbox" <?php echo $acceptationConsentement === 'on' ? 'checked' : ''; ?>
                         class="{{ isset($tValidation['consentement']['valide']) && $tValidation['consentement']['valide'] === false ? 'erreur' : '' }}">
 
-                    <label for="consentement"> J'accepte les consentements</label>
+                    <label for="consentement"> J'autorise l'utilisation de mon numéro de téléphone avec le responsable «
+                        Étudiant d'un jour ». </label>
 
                 </div>
 
@@ -115,6 +121,8 @@
                         </span>
                     </div>
                 @endif
+
+                <span id="err_consentement"></span>
 
             </div>
 
@@ -151,4 +159,5 @@
 if (isset($_SESSION['tValidation'])) {
     unset($_SESSION['tValidation']);
 }
+
 ?>

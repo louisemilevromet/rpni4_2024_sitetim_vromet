@@ -23,6 +23,16 @@ h1 {
   text-transform: uppercase;
 }
 
+//H2
+h2 {
+  font-size: clamp(3rem, 6vw, 5rem);
+}
+
+//H3
+h3 {
+  font-size: clamp(1rem, 2vw, 2rem);
+}
+
 // Logo
 .hero__navbarcontainer__logo p {
   text-transform: uppercase;
@@ -39,8 +49,7 @@ h1 {
 a {
   --s: 0.1em; /* the thickness of the line */
   --c: #fff; /* the color */
-
-  color: #0000;
+  color: rgba($white, 0.6);
   padding-bottom: var(--s);
   background: linear-gradient(90deg, var(--c) 50%, #000 0)
       calc(100% - var(--_p, 0%)) / 200% 100%,

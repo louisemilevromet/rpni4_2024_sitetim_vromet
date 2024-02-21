@@ -31,8 +31,11 @@ class ControleurSite
 
     public function stages(): void
     {
+        $textes = Textes::trouverTout();
+
         $tDonnes = array(
             "titrePage" => "les stages",
+            "textes" => $textes
         );
         echo App::getBlade()->run('stages', $tDonnes);
     }

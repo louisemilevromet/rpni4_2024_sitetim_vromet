@@ -33,6 +33,21 @@ class Textes
         return $textes;
     }
 
+    public static function trouverParId(int $id)
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM textes WHERE id = :id';
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Textes');
+        // Exécuter la requête
+        $requetePreparee->execute(array(':id' => $id));
+        // Récupérer le résultat
+        $texte = $requetePreparee->fetch();
+        return $texte;
+    }
+
     public function getId(): int
     {
         return $this->id;
