@@ -11,7 +11,7 @@
  <div class="container">
  <div class="container__container">
  <div>
- <?php echo Textes::trouverParId(24)->getTexte(); ?>
+ <?php echo $texteId24; ?>
 
  </div>
 
@@ -34,7 +34,7 @@
  </div>
  <div class="container__container-info" id="stages-finaux-info">
  <h3>Dates de début : 17 mars 2025</h3>
- <?php echo Textes::trouverParId(25)->getTexte(); ?>
+ <?php echo $texteId25; ?>
 
  </div>
  </div>
@@ -57,7 +57,7 @@
  </div>
  <div class="container__container-info" id="stages-ate-info">
  <h3>Dates de début : 17 mars 2025</h3>
- <?php echo Textes::trouverParId(26)->getTexte(); ?>
+ <?php echo $texteId26; ?>
 
  </div>
  </div>

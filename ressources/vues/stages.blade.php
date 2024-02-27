@@ -11,7 +11,7 @@
     <div class="container">
         <div class="container__container">
             <div>
-                {!! Textes::trouverParId(24)->getTexte() !!}
+                {!! $texteId24 !!}
             </div>
 
             <div class="container__container-stages">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="container__container-info" id="stages-finaux-info">
                             <h3>Dates de début : 17 mars 2025</h3>
-                            {!! Textes::trouverParId(25)->getTexte() !!}
+                            {!! $texteId25 !!}
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="container__container-info" id="stages-ate-info">
                             <h3>Dates de début : 17 mars 2025</h3>
-                            {!! Textes::trouverParId(26)->getTexte() !!}
+                            {!! $texteId26 !!}
                         </div>
                     </div>
                     <div class="line"> </div>
