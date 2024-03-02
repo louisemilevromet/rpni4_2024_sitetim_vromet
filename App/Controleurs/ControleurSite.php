@@ -22,16 +22,6 @@ class ControleurSite
         echo App::getBlade()->run('accueil', $tDonnes);
     }
 
-    public function projets(): void
-    {
-        $projets = Projets::trouverTout();
-        $tDonnes = array(
-            "titrePage" => "projets",
-            "projets" => $projets,
-        );
-        echo App::getBlade()->run('projets', $tDonnes);
-    }
-
     public function stages(): void
     {
         // On récupère les textes de la base de données
@@ -50,7 +40,7 @@ class ControleurSite
             "texteId25" => $texteId25,
             "texteId26" => $texteId26
         );
-        echo App::getBlade()->run('stages', $tDonnes);
+        echo App::getBlade()->run('stages.index', $tDonnes);
     }
 
     public function contact(): void

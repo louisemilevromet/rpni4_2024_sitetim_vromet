@@ -9,7 +9,7 @@
             <div class="hero__navbarcontainer__metanav">
                 <ul>
                     <li>
-                        <a href="index.php?controleur=site&action=projets">Projets</a>
+                        <a href="index.php?controleur=projets&action=index">Projets</a>
                     </li>
                     <li>
                         <a href="index.php?controleur=site&action=stages">Stages</a>
