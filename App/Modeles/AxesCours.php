@@ -33,6 +33,22 @@ class AxesCours
         return $axesCours;
     }
 
+    public static function trouverAxesCoursParAxeCours($unID): array
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM axes_cours WHERE axe_id IN ' . $unID;
+        echo $chaineSQL;
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\AxesCours');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $axesCours = $requetePreparee->fetchAll();
+        return $axesCours;
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -51,5 +67,15 @@ class AxesCours
     public function getAxesAssociées(): array
     {
         return Axes::trouverAxesParId($this->axe_id);
+    }
+
+    public function getCoursAssociés(): Cours
+    {
+        return Cours::trouverCoursParId($this->cours_id);
+    }
+
+    public function getTousCoursAssociés(): array
+    {
+        return Cours::trouverTousCoursParId($this->cours_id);
     }
 }

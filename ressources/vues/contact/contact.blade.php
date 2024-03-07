@@ -15,7 +15,7 @@
             </div>
 
             <div class="form__nom-container">
-                <label for="nom" id="label-nom">Nom complet *</label>
+                <p for="nom" id="label-nom">Nom complet *</p>
                 @if (isset($tValidation['nom']['message']) && $tValidation['nom']['message'] !== '')
                     <span class="err_nom">
                         {{ $tValidation['nom']['message'] }}
@@ -30,7 +30,7 @@
             </div>
 
             <div class="form__courriel-container">
-                <label for="courriel">Courriel</label>
+                <p for="courriel">Courriel</p>
                 @if (isset($tValidation['courriel']['message']) && $tValidation['courriel']['message'] !== '')
                     <span class="err_courriel">
                         {{ $tValidation['courriel']['message'] }}
@@ -46,7 +46,7 @@
             </div>
 
             <div class="form__destinataire-container">
-                <label for="destinataire" class="screen-reader-only">Destinataire</label>
+                <p for="destinataire" class="screen-reader-only">Destinataire</p>
                 <select name="destinataire" id="destinataire">
                     @foreach ($tResponsables as $Responsable)
                         <option value="{{ $Responsable->getId() }}"> {{ $Responsable->getPrenomNom() }}</option>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="form__telephone-container">
-                <label for="telephone">Téléphone</label>
+                <p for="telephone">Téléphone</p>
                 @if (isset($tValidation['telephone']['message']) && $tValidation['telephone']['message'] !== '')
                     <span class="err_telephone">
                         {{ $tValidation['telephone']['message'] }}
@@ -70,7 +70,7 @@
             </div>
 
             <div class="form__sujet-container">
-                <label for="sujet">Sujet</label>
+                <p for="sujet">Sujet</p>
                 @if (isset($tValidation['sujet']['message']) && $tValidation['sujet']['message'] !== '')
                     <span class="err_sujet">
                         {{ $tValidation['sujet']['message'] }}
@@ -86,7 +86,7 @@
             </div>
 
             <div class="form__message-container">
-                <label for="message">Message</label>
+                <p for="message">Message</p>
                 @if (isset($tValidation['message']['message']) && $tValidation['message']['message'] !== '')
                     <span class="err_message">
                         {{ $tValidation['message']['message'] }}
@@ -109,8 +109,8 @@
                     <input name="consentement" id="consentement" type="checkbox" <?php echo $acceptationConsentement === 'on' ? 'checked' : ''; ?>
                         class="{{ isset($tValidation['consentement']['valide']) && $tValidation['consentement']['valide'] === false ? 'erreur' : '' }}">
 
-                    <label for="consentement"> J'autorise l'utilisation de mon numéro de téléphone avec le responsable «
-                        Étudiant d'un jour ». </label>
+                    <p for="consentement"> J'autorise l'utilisation de mon numéro de téléphone avec le responsable «
+                        Étudiant d'un jour ». </p>
 
                 </div>
 
@@ -134,7 +134,7 @@
                     ?>
                     <input name="humain" id="humain" type="checkbox" <?php echo $estHumain === 'on' ? 'checked' : ''; ?>
                         class="{{ isset($tValidation['nom']['valide']) && $tValidation['nom']['valide'] === false ? 'erreur' : '' }}">
-                    <label for="humain"> Êtes vous un robot ?</label>
+                    <p for="humain"> Êtes vous un robot ?</p>
                 </div>
 
                 @if (isset($tValidation['humain']['message']) && $tValidation['humain']['message'] !== '')

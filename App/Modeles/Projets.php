@@ -39,6 +39,21 @@ class Projets
         return $projets;
     }
 
+    public static function trouverParId($unId): Projets
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM projets WHERE id = ' . $unId;
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Projets');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $projet = $requetePreparee->fetch();
+        return $projet;
+    }
+
     public static function trouverParAnnée($uneAnnee): array
     {
         // Définir la chaine SQL
@@ -46,7 +61,8 @@ class Projets
             'SELECT DISTINCT projets.id, projets.titre, projets.technologies, projets.description, projets.url, projets.diplome_id, projets.cours_id, cours.session, cours.annee
               FROM projets 
               INNER JOIN cours ON projets.cours_id = cours.id 
-              WHERE cours.annee = ' . $uneAnnee;
+              WHERE cours.annee IN ' . $uneAnnee;
+        echo $chaineSQL;
         // Préparer la requête (optimisation)
         $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
@@ -55,6 +71,58 @@ class Projets
         $requetePreparee->execute();
         // Récupérer le résultat
         $projets = $requetePreparee->fetchAll();
+        return $projets;
+    }
+
+    public static function trouverParCours($unCours_id): array
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM projets WHERE cours_id = ' . $unCours_id;
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Projets');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $projets = $requetePreparee->fetchAll();
+        return $projets;
+    }
+
+    public static function trouverParFiltres(array $filtres): array
+    {
+        $conditions = [];
+        $params = [];
+
+        if (!empty($filtres['axe'])) {
+            $conditions[] = 'axes.id = :axe_id';
+            $params['axe_id'] = $filtres['axe'];
+        }
+
+        if (!empty($filtres['annee'])) {
+            $conditions[] = 'cours.annee = :annee';
+            $params['annee'] = $filtres['annee'];
+        }
+
+        // Définir la chaine SQL
+        $chaineSQL = "SELECT DISTINCT projets.*
+            FROM projets
+            JOIN axes_cours ON projets.cours_id = axes_cours.cours_id
+            JOIN axes ON axes.id = axes_cours.axe_id
+            JOIN cours ON projets.cours_id = cours.id
+            " . (!empty($conditions) ? 'WHERE ' . implode(' AND ', $conditions) : '');
+
+        // echo $chaineSQL;
+
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Projets');
+        // Exécuter la requête
+        $requetePreparee->execute($params);
+        // Récupérer le résultat
+        $projets = $requetePreparee->fetchAll();
+
         return $projets;
     }
 
@@ -101,5 +169,10 @@ class Projets
     public function getCoursAssociés(): Cours
     {
         return Cours::trouverCoursParId($this->cours_id);
+    }
+
+    public function getEtapesAssociées(): array
+    {
+        return Etapes::trouverParProjetId($this->id);
     }
 }

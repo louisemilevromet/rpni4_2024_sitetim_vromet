@@ -17,6 +17,21 @@ class Axes
     {
     }
 
+    public static function trouverTout(): array
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM axes';
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Axes');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $axes = $requetePreparee->fetchAll();
+        return $axes;
+    }
+
     public static function trouverAxesParId($unId): array
     {
         // Définir la chaine SQL
@@ -40,5 +55,10 @@ class Axes
     public function getNom(): string
     {
         return $this->nom;
+    }
+
+    public function getAxesCoursAssociés(): array
+    {
+        return AxesCours::trouverAxesCoursParAxeCours($this->id);
     }
 }

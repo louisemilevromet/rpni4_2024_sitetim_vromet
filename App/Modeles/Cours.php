@@ -19,6 +19,21 @@ class Cours
     {
     }
 
+    public static function trouverTout(): array
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM cours';
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Cours');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $cours = $requetePreparee->fetchAll();
+        return $cours;
+    }
+
     public static function trouverCoursParId($unId): Cours
     {
         // Définir la chaine SQL
@@ -32,6 +47,21 @@ class Cours
         // Récupérer le résultat
         $cour = $requetePreparee->fetch();
         return $cour;
+    }
+
+    public static function trouverTousCoursParId($unId): array
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM cours WHERE id = ' . $unId;
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Cours');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $cours = $requetePreparee->fetchAll();
+        return $cours;
     }
 
     public static function trouverCoursParAnnee($uneAnnee): array
@@ -77,5 +107,10 @@ class Cours
     public function setAnnee($uneAnnee)
     {
         $this->annee = $uneAnnee;
+    }
+
+    public function getProjetsAssociésParCours()
+    {
+        return Projets::trouverParCours($this->id);
     }
 }

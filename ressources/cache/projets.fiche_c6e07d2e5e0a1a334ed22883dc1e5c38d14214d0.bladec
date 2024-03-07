@@ -1,0 +1,33 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('contenu'); ?>
+ <div class="container">
+
+ <div class="container-projet__entete">
+ <?php echo $projet->getDescription(); ?>
+
+ </div>
+
+ </div>
+ <div class="container-projet__tech">
+ <h2>Technologies utilisées</h2>
+
+ <?php echo $projet->getTechnologies(); ?>
+
+ </div>
+
+ <?php if($projet->getEtapesAssociées() !== []): ?>
+ <div class="container-projet__etapes">
+ <h2>Étapes</h2>
+
+ <?php $__currentLoopData = $projet->getEtapesAssociées(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $etape): $loop = $this->incrementLoopIndices();  ?>
+ <?php echo $etape->getNom(); ?>
+
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </div>
+ <?php endif; ?>
+
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('gabarit'); } ?>
