@@ -165,8 +165,6 @@
                             <img class="img-projet" src="https://placehold.co/618x348">
                         @endif
                     </li>
-
-
                     {{-- @foreach ($projet->getAxesCoursAssociés() as $axes_cours)
                         @foreach ($axes_cours->getAxesAssociées() as $axes)
                             <p>Axe : {{ $axes->getNom() }}</p>

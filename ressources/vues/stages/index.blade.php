@@ -9,13 +9,11 @@
 
 @section('contenu')
     <div class="container">
-        <div class="container__container">
-            <div>
-                {!! $texteId24 !!}
-            </div>
-
+        <div class="container-entete">
+            {!! $texteId24 !!}
+        </div>
+        <div class="container__stages">
             <div class="container__container-stages">
-
                 <div class="container__container-stages-finaux">
                     <div class="line"> </div>
                     <div class="container__container-contenu">
@@ -76,6 +74,5 @@
                     <button>Contacter Pascal Larose</button>
                 </div>
             </div>
-
         </div>
     @endsection

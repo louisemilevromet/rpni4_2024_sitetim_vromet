@@ -1,24 +1,88 @@
 <?php $_shouldextend[1]=1; ?>
 
 <?php $this->startSection('contenu'); ?>
- <div class="container">
-
- <div class="container-projet__entete">
+ <div class="container-entete">
  <?php echo $projet->getDescription(); ?>
 
  </div>
+ <div class="container-left">
+ <h2>TECHNOLOGIES UTILISÉES</h2>
 
+ <?php $array = explode(', ', $projet->getTechnologies()); ?>
+ <div class="techs-container">
+ <?php $__currentLoopData = $array; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $techno): $loop = $this->incrementLoopIndices();  ?>
+ <div class="techs">
+ <p><?php echo \htmlentities($techno??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+ <?php if(file_exists('./liaisons/images/technos/' . $techno . '.png')): ?>
+ <img class="img-techno" src="./liaisons/images/technos/<?php echo \htmlentities($techno??'', ENT_QUOTES, 'UTF-8', false); ?>.png">
+ <?php else: ?>
+ <img class="img-techno" src="https://placehold.co/50x50">
+ <?php endif; ?>
  </div>
- <div class="container-projet__tech">
- <h2>Technologies utilisées</h2>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </div>
+ </div>
 
- <?php echo $projet->getTechnologies(); ?>
+ <div class="container-right">
+ <h2 style="width: 80%; text-align: end; text-transform: uppercase;">AUTRES PROJETS DE
+ <?php echo \htmlentities($projet->getDimplomeAssocié()->getPrenom()??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ <?php echo \htmlentities($projet->getDimplomeAssocié()->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?></h2>
+ </div>
+
+ <div class="container-projets-associes">
+ <ul class="container-images__ul-projet">
+ <?php $__currentLoopData = $projet->getDimplomeAssocié()->getProjetsAssociés(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $projetAssocie): $loop = $this->incrementLoopIndices();  ?>
+ <?php if($projetAssocie->getId() !== $projet->getId()): ?>
+ <li class="container-images__container">
+ <div class="container-images__infos">
+ <h3 style="text-transform: uppercase;   font-size: clamp(1rem, 3vw, 3rem); font-style: bold;">
+ <?php echo \htmlentities($projetAssocie->getTitre()??'', ENT_QUOTES, 'UTF-8', false); ?></h3>
+ <p>
+ <?php if($projetAssocie->getCoursAssociés()->getAnnee() == 1): ?>
+ <?php echo \htmlentities($projetAssocie->getCoursAssociés()->getAnnee()??'', ENT_QUOTES, 'UTF-8', false); ?><sup>ère</sup> année
+ <?php else: ?>
+ <?php echo \htmlentities($projetAssocie->getCoursAssociés()->getAnnee()??'', ENT_QUOTES, 'UTF-8', false); ?><sup>e</sup> année
+ <?php endif; ?>
+ </p>
+ <p><?php echo $projetAssocie->getTechnologies(); ?></p>
+ <p>
+ <?php $__currentLoopData = $projetAssocie->getAxesCoursAssociés(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $axescours): $loop = $this->incrementLoopIndices();  ?>
+ <?php $__currentLoopData = $axescours->getAxesAssociées(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $axes): $loop = $this->incrementLoopIndices();  ?>
+ <?php echo $axes->getNom(); ?>
+
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </p>
+ <p><a href="index.php?controleur=projets&action=fiche&id=<?php echo \htmlentities($projetAssocie->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ Voir le projet</a>
+ <p>
+ </div>
+ <?php if(file_exists(
+ './liaisons/images/projets_recadrer/' .
+ $projetAssocie->getDiplomeId() .
+ '_' .
+ $projetAssocie->getId() .
+ '_01__w700.png')): ?>
+ <img class="img-projet"
+ src="./liaisons/images/projets_recadrer/<?php echo \htmlentities($projetAssocie->getDiplomeId()??'', ENT_QUOTES, 'UTF-8', false); ?>_<?php echo \htmlentities($projetAssocie->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>_01__w700.png">
+ <?php else: ?>
+ <img class="img-projet" src="https://placehold.co/618x348">
+ <?php endif; ?>
+ </li>
+ <?php endif; ?>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </ul>
 
  </div>
 
  <?php if($projet->getEtapesAssociées() !== []): ?>
  <div class="container-projet__etapes">
- <h2>Étapes</h2>
+ <h2>ÉTAPES</h2>
 
  <?php $__currentLoopData = $projet->getEtapesAssociées(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $etape): $loop = $this->incrementLoopIndices();  ?>

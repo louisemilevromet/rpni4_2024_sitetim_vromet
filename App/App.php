@@ -88,7 +88,7 @@ class App
         session_start();
         // Valeurs par défaut
         $urlControleur = 'site';
-        $urlAction = 'accueil';
+        $urlAction = 'index';
 
         // Instance de l'objet controleur
         $objControleur = null;
@@ -107,8 +107,8 @@ class App
         if ($urlControleur === 'site') {
             $objControleur = new ControleurSite();
             switch ($urlAction) {
-                case 'accueil':
-                    $objControleur->accueil();
+                case 'index':
+                    $objControleur->index();
                     break;
                 case 'stages':
                     $objControleur->stages();

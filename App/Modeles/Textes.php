@@ -13,6 +13,8 @@ class Textes
     private string $titre = "";
     private string $texte = "";
     private int $epic = 0;
+    private string $pourcentage = "";
+    private string $liste = "";
 
     public function __construct()
     {
@@ -48,6 +50,21 @@ class Textes
         return $texte;
     }
 
+    public static function trouverAxes()
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM `textes` WHERE id IN (13, 14, 15, 16, 17)';
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Textes');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $axes = $requetePreparee->fetchAll();
+        return $axes;
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -66,5 +83,15 @@ class Textes
     public function getEpic(): int
     {
         return $this->epic;
+    }
+
+    public function getPourcentage(): string
+    {
+        return $this->pourcentage;
+    }
+
+    public function getListe(): string
+    {
+        return $this->liste;
     }
 }

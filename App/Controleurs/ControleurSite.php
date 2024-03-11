@@ -14,12 +14,23 @@ class ControleurSite
     {
     }
 
-    public function accueil(): void
+    public function index(): void
     {
+        $texteId8 = Textes::trouverParId(8)->getTexte();
+        $texteId10 = Textes::trouverParId(10)->getTexte();
+        $texteId11 = Textes::trouverParId(11)->getTexte();
+        $texteId22 = Textes::trouverParId(22);
+        $axes = Textes::trouverAxes();
+
         $tDonnes = array(
-            "titrePage" => "techniques d'intégration multimédia"
+            "titrePage" => "techniques d'intégration multimédia",
+            "texteId8" => $texteId8,
+            "texteId10" => $texteId10,
+            "texteId11" => $texteId11,
+            "texteId22" => $texteId22,
+            "axes" => $axes
         );
-        echo App::getBlade()->run('accueil', $tDonnes);
+        echo App::getBlade()->run('accueil.index', $tDonnes);
     }
 
     public function stages(): void
@@ -31,7 +42,6 @@ class ControleurSite
         $texteId24 = Textes::trouverParId(24)->getTexte();
         $texteId25 = Textes::trouverParId(25)->getTexte();
         $texteId26 = Textes::trouverParId(26)->getTexte();
-
 
         $tDonnes = array(
             "titrePage" => "les stages",

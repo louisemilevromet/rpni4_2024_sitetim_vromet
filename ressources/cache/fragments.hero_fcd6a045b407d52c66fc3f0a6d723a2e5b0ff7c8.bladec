@@ -3,11 +3,13 @@
  <div class="hero__navbarcontainer">
  <div class="hero__navbarcontainer__logo">
  <p>
+ <a href="index.php?controleur=site&action=index">
  tim
+ </a>
  </p>
  </div>
  <div class="hero__navbarcontainer__metanav">
- <ul>
+ <ul class="ul-nav">
  <li>
  <a href="index.php?controleur=projets&action=index">Projets</a>
  </li>
@@ -36,6 +38,15 @@
  </svg>
  </li>
  </ul>
+ <div class="hamburger" style="display: none">
+ <svg className="block h-7 w-7 fill-current flip-horizontal" viewBox="0 0 20 20"
+ xmlns="http://www.w3.org/2000/svg">
+ <title>Mobile menu</title>
+ <rect x="0.5" y="3.5" width="17" height="1.5" rx="0.5" ry="0.5"></rect>
+ <rect x="0.5" y="9" width="19" height="1.5" rx="0.5" ry="0.5"></rect>
+ <rect x="0.5" y="14.5" width="13" height="1.5" rx="0.5" ry="0.5"></rect>
+ </svg>
+ </div>
  </div>
  </div>
  </div>

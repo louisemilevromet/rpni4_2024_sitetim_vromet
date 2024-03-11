@@ -126,6 +126,21 @@ class Projets
         return $projets;
     }
 
+    public static function trouverParDiplomeId($unDiplome_id): array
+    {
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM projets WHERE diplome_id = ' . $unDiplome_id;
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Projets');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $projets = $requetePreparee->fetchAll();
+        return $projets;
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -174,5 +189,10 @@ class Projets
     public function getEtapesAssociées(): array
     {
         return Etapes::trouverParProjetId($this->id);
+    }
+
+    public function getDimplomeAssocié(): Diplomes
+    {
+        return Diplomes::trouverParId($this->diplome_id);
     }
 }

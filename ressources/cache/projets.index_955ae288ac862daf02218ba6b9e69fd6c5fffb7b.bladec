@@ -169,8 +169,6 @@
  <img class="img-projet" src="https://placehold.co/618x348">
  <?php endif; ?>
  </li>
-
-
  <?php /* <?php $__currentLoopData = $projet->getAxesCoursAssociés(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $axes_cours): $loop = $this->incrementLoopIndices();  ?>
  <?php $__currentLoopData = $axes_cours->getAxesAssociées(); $this->addLoop($__currentLoopData);$this->getFirstLoop();

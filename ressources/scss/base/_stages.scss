@@ -1,6 +1,13 @@
+.container__stages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding-bottom: 14rem;
+}
+
 .container__container-stages {
   display: flex;
-  gap: 3rem;
   flex-direction: column;
 }
 

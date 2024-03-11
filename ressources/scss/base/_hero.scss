@@ -46,7 +46,6 @@
 }
 .hero__container-titre {
   position: absolute;
-  padding: 3rem;
   top: 50%;
   transform: translate(0, -50%);
 }
@@ -65,4 +64,8 @@
   width: 100%;
   border-bottom: 1px solid rgba($white, 0.1);
   position: absolute;
+}
+
+rect {
+  fill: $white;
 }

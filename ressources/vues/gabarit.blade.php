@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./liaisons/css/styles.css" />
     {{-- <script defer src="./liaisons/js/cursor.js"></script> --}}
     <script type="module" src="./liaisons/js/validation.js" defer></script>
+    <script type="module" src="./liaisons/js/nav.js" defer></script>
     <script type="module" src="./liaisons/js/projets.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

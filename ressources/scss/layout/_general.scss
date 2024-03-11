@@ -49,15 +49,50 @@ path {
 .container {
   display: flex;
   justify-content: center;
-  padding-top: 10rem;
+  padding-left: 10%;
+  padding-right: 10%;
   flex-direction: column;
   align-items: center;
 }
 
+.container-left {
+  padding-bottom: 14rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  padding-bottom: 14rem;
+  gap: 3rem;
+}
+
+.container-entete {
+  display: flex;
+  padding-top: 14rem;
+
+  padding-bottom: 14rem;
+  justify-content: center;
+  p {
+    width: 80%;
+  }
+}
+
 .container__container {
-  width: 80%;
-  max-width: 800px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10rem;
+}
+
+video {
+  width: 25%;
+  height: auto;
 }
