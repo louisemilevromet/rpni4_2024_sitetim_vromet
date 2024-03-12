@@ -113,6 +113,9 @@ class App
                 case 'stages':
                     $objControleur->stages();
                     break;
+                case 'diplome':
+                    $objControleur->diplome();
+                    break;
                 default:
                     echo 'Erreur 404 - Action invalide';
             }

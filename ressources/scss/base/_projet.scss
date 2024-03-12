@@ -22,3 +22,59 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.container-entete__images-projets {
+  width: fit-content;
+  display: flex;
+  gap: 1rem;
+}
+
+.container-etapes {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  margin: 3rem;
+}
+
+.container-etapes__element {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-etapes__infos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 40%;
+}
+
+@media (max-width: 1250px) {
+  .container-etapes__element {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: normal;
+  }
+  .container-etapes__infos {
+    width: 50%;
+  }
+}
+
+@media (max-width: 800px) {
+  .container-etapes__infos {
+    width: 75%;
+  }
+  .container-diplome__infos {
+    width: 100% !important;
+  }
+}
+
+.container-diplome__infos {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 65%;
+}

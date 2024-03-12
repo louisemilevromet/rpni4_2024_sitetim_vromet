@@ -4,6 +4,7 @@
 
 @endphp
 @extends('gabarit')
+<script src="./liaisons/js/links.js" defer></script>
 <script src="./liaisons/js/stages.js" defer></script>
 
 
@@ -64,14 +65,16 @@
                 <p style="font-weight: 900">Télécharger le profil des compétences de nos étudiant.e.s pour déterminer le
                     stage à offrir.</p>
                 <div>
-                    <button>Lien de téléchargement</button>
+                    <button onclick="openLinks('https://timcsf.ca/liaisons/pdf/profilCompetences_2023.pdf')">Lien de
+                        téléchargement</button>
                 </div>
             </div>
 
             <div class="container__container-infos">
                 <p style="font-weight: 900">Des questions à propos des stages?</p>
                 <div>
-                    <button>Contacter Pascal Larose</button>
+                    <button onclick="changePage('index.php?controleur=contact&action=creer')">Contacter Pascal
+                        Larose</button>
                 </div>
             </div>
         </div>

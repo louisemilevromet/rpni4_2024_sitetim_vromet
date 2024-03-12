@@ -123,9 +123,7 @@
                 </div>
                 <div class="container-filtre__submit">
                     <button type="submit">Filtrer</button>
-                    <button><a style="color: white; text-decoration: none;"
-                            href="index.php?controleur=projets&action=index">Réinitialiser</a></button>
-
+                    <button onclick="changePage('index.php?controleur=projets&action=index')">Réinitialiser</button>
                 </div>
 
             </div>
@@ -165,12 +163,6 @@
                             <img class="img-projet" src="https://placehold.co/618x348">
                         @endif
                     </li>
-                    {{-- @foreach ($projet->getAxesCoursAssociés() as $axes_cours)
-                        @foreach ($axes_cours->getAxesAssociées() as $axes)
-                            <p>Axe : {{ $axes->getNom() }}</p>
-                        @endforeach
-                    @endforeach
-                    <p>Année : {{ $projet->getCoursAssociés()->getAnnee() }}</p> --}}
                 @endforeach
             </ul>
 

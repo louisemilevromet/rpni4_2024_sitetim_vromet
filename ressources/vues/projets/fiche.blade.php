@@ -1,7 +1,24 @@
 @extends('gabarit')
 
 @section('contenu')
-    <div class="container-entete">
+    <div class="container-entete"
+        style="flex-direction: column; align-items: center; gap: 8rem; margin-left: 3rem; margin-right: 3rem;">
+        <div class="container-images__ul-projet">
+            @for ($i = 1; $i <= 7; $i++)
+                @if (is_file(
+                        './liaisons/images/projets_recadrer/' .
+                            $projet->getDiplomeId() .
+                            '_' .
+                            $projet->getId() .
+                            '_0' .
+                            $i .
+                            '__w700.png'))
+                    <img class="img-projet"
+                        src="./liaisons/images/projets_recadrer/{{ $projet->getDiplomeId() }}_{{ $projet->getId() }}_0{{ $i }}__w700.png"
+                        alt="Image du projet {{ $projet->getTitre() }}">
+                @endif
+            @endfor
+        </div>
         {!! $projet->getDescription() !!}
     </div>
     <div class="container-left">
@@ -23,9 +40,12 @@
     </div>
 
     <div class="container-right">
+
         <h2 style="width: 80%; text-align: end; text-transform: uppercase;">AUTRES PROJETS DE
-            {{ $projet->getDimplomeAssocié()->getPrenom() }}
-            {{ $projet->getDimplomeAssocié()->getNom() }}</h2>
+            <a href="index.php?controleur=site&action=diplome&id={{ $projet->getDimplomeAssocié()->getId() }}">
+                {{ $projet->getDimplomeAssocié()->getPrenom() }}
+                {{ $projet->getDimplomeAssocié()->getNom() }} </a>
+        </h2>
     </div>
 
     <div class="container-projets-associes">
@@ -74,11 +94,33 @@
     </div>
 
     @if ($projet->getEtapesAssociées() !== [])
-        <div class="container-projet__etapes">
+        <div class="container-left">
             <h2>ÉTAPES</h2>
+        </div>
 
+
+        <div class="container-etapes">
             @foreach ($projet->getEtapesAssociées() as $etape)
-                {!! $etape->getNom() !!}
+                <div class="container-etapes__element">
+                    <div class="container-etapes__infos" style="">
+                        <h2 style="font-size: clamp(2rem, 3vw, 3rem);">{!! $etape->getNom() !!}</h2>
+                        {!! $etape->getDescription() !!}
+                    </div>
+
+                    @if (file_exists(
+                            './liaisons/images/projets_recadrer/' .
+                                $projet->getDiplomeId() .
+                                '_' .
+                                $projet->getId() .
+                                '_e' .
+                                $etape->getId() .
+                                '__w700.png'))
+                        <img class="img-projet"
+                            src="./liaisons/images/projets_recadrer/{{ $projet->getDiplomeId() }}_{{ $projet->getId() }}_e{{ $etape->getId() }}__w700.png">
+                    @else
+                        <img class="img-projet" src="https://placehold.co/618x348">
+                    @endif
+                </div>
             @endforeach
         </div>
     @endif

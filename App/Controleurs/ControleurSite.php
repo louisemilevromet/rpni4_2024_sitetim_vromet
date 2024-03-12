@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controleurs;
 
 use App\App;
+use App\Modeles\Diplomes;
 use App\Modeles\Projets;
 use App\Modeles\Textes;
 
@@ -19,7 +20,11 @@ class ControleurSite
         $texteId8 = Textes::trouverParId(8)->getTexte();
         $texteId10 = Textes::trouverParId(10)->getTexte();
         $texteId11 = Textes::trouverParId(11)->getTexte();
+        $texteId19 = Textes::trouverParId(19)->getTexte();
+        $texteId20 = Textes::trouverParId(20)->getTexte();
+        $texteId21 = Textes::trouverParId(21)->getTexte();
         $texteId22 = Textes::trouverParId(22);
+        $texteId23 = Textes::trouverParId(23)->getTexte();
         $axes = Textes::trouverAxes();
 
         $tDonnes = array(
@@ -27,7 +32,11 @@ class ControleurSite
             "texteId8" => $texteId8,
             "texteId10" => $texteId10,
             "texteId11" => $texteId11,
+            "texteId19" => $texteId19,
+            "texteId20" => $texteId20,
+            "texteId21" => $texteId21,
             "texteId22" => $texteId22,
+            "texteId23" => $texteId23,
             "axes" => $axes
         );
         echo App::getBlade()->run('accueil.index', $tDonnes);
@@ -53,8 +62,17 @@ class ControleurSite
         echo App::getBlade()->run('stages.index', $tDonnes);
     }
 
-    public function contact(): void
+    public function diplome(): void
     {
-        echo App::getBlade()->run('contact.contact');
+        $id = $_GET['id'];
+        $diplome = Diplomes::trouverParId($id);
+        $titre = $diplome->getPrenom() . ' ' . $diplome->getNom();
+
+
+        $tDonnes = array(
+            "titrePage" => "$titre",
+            "diplome" => $diplome,
+        );
+        echo App::getBlade()->run('diplomes.fiche', $tDonnes);
     }
 }

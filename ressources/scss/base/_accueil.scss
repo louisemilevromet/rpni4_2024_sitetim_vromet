@@ -1,6 +1,5 @@
 .container-entete__element {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
 }
 
@@ -21,4 +20,37 @@
 }
 
 .container-left__axes-container__pourcent {
+}
+
+@media (max-width: 1000px) {
+  video {
+    width: 50%;
+  }
+  .cours {
+    flex-direction: column !important;
+    align-items: normal !important;
+    button {
+      max-width: 7rem;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container-entete__element {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 14rem;
+    p {
+      width: 100% !important;
+    }
+  }
+  video {
+    width: 75%;
+  }
+
+  img {
+    width: 75% !important;
+  }
 }
