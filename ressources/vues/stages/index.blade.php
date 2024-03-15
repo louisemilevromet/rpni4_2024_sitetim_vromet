@@ -18,7 +18,7 @@
                 <div class="container__container-stages-finaux">
                     <div class="line"> </div>
                     <div class="container__container-contenu">
-                        <div class="container__container-titre">
+                        <div class="container__container-titre" id="div-finaux">
                             <h2>Stages Finaux</h2>
                             <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="stages-finaux-svg"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -40,7 +40,7 @@
                 <div class="container__container-stages-ate">
                     <div class="line"> </div>
                     <div class="container__container-contenu">
-                        <div class="container__container-titre">
+                        <div class="container__container-titre" id="div-ate">
                             <h2>Stages ATE</h2>
                             <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="stages-ate-svg"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"

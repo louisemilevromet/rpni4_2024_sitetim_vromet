@@ -11,11 +11,11 @@
     <div class="container">
         <div class="container-entete">
             <div class="container-entete__element">
-                <video controls poster="./liaisons/images/Video_pic.png">
+                <video class="video" controls poster="./liaisons/images/Video_pic.png">
                     <source src="./liaisons/images/Vromet_TIM_Final.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p style="width: 45%"> {!! $texteId11 !!} </p>
+                <h3 class="h3-accueil"> {!! $texteId11 !!} </h3>
             </div>
         </div>
     </div>
@@ -47,15 +47,15 @@
         </div>
     </div>
 
-    <div class="container-left">
+    <div class="container-right">
         <h2>BOURSES</h2>
         {!! $texteId10 !!}
     </div>
 
-    <div class="container-right">
+    <div class="container-left">
         <h2>ÉTUDIANT D'UN JOUR</h2>
         {!! $texteId8 !!}
-        <button
+        <button style="width: fit-content;"
             onclick="openLinks('https://www.csfoy.ca/etudiante-et-etudiant-dun-jour/etudiante-et-etudiant-dun-jour-formulaire/')">Remplir
             le formulaire d'inscription</button>
     </div>
@@ -66,7 +66,7 @@
                 <div class="container__container-stages-finaux">
                     <div class="line"> </div>
                     <div class="container__container-contenu">
-                        <div class="container__container-titre">
+                        <div class="container__container-titre" id="div-prof">
                             <h2 style="font-size: clamp(2rem, 5vw, 4rem);">PROFESSION</h2>
                             <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="profession-svg"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -89,7 +89,7 @@
                 <div class="container__container-stages-ate">
                     <div class="line"> </div>
                     <div class="container__container-contenu">
-                        <div class="container__container-titre">
+                        <div class="container__container-titre" id="div-uni">
                             <h2 style="font-size: clamp(2rem, 5vw, 4rem);">PROGRAMMES <br> UNIVERSITAIRES</h2>
                             <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="uni-svg"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -111,7 +111,7 @@
                 <div class="container__container-stages-ate">
                     <div class="line"> </div>
                     <div class="container__container-contenu">
-                        <div class="container__container-titre">
+                        <div class="container__container-titre" id="div-type">
                             <h2 style="font-size: clamp(2rem, 5vw, 4rem);">TYPE <br> D'EMPLOYEURS</h2>
                             <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="type-svg"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -138,8 +138,6 @@
     display: flex;
     flex-direction: row;
     gap: 3rem;
-    margin-left: 3rem;
-    margin-right: 3rem;
     align-items: center;
 ">
         <h2>GRILLE DE COURS</h2>
@@ -154,5 +152,25 @@
         <p>Les demandes d'admission au programme TIM sont reçues avant le 1er mars de chaque année (1er tour),le 1er mai (2e
             tour) , le 1er juin (3e tour) et le 1er août(4e tour).</p>
         <button onclick="openLinks('https://www.sracq.qc.ca/')">Inscription en ligne</button>
+    </div>
+
+    <div class="container-left">
+        <h2>TÉMOIGNAGES DES ANCIENS</h2>
+    </div>
+
+    <div class="container-temoignages">
+        @foreach ($temoignages as $temoignage)
+            <div class="container-temoignage">
+                <div class="container-temoignage__image">
+                    <img style="width: 75%; border-radius: 4px;"
+                        src="./liaisons/images/temoignages/{{ $temoignage->getId() }}.png"
+                        alt="{{ $temoignage->getTemoin() }}">
+                </div>
+                <div class="container-temoignage__texte">
+                    <h3> {{ $temoignage->getTemoin() }} </h3>
+                    <p> {{ $temoignage->getTemoignage() }} </p>
+                </div>
+            </div>
+        @endforeach
     </div>
 @endsection

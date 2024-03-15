@@ -11,7 +11,7 @@
   position: sticky;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: 3rem;
 }
 
 .container-filtre__triage {
@@ -55,7 +55,7 @@
   height: 100%;
   max-width: 600px;
   object-fit: cover;
-  border-radius: $border-radius;
+  border-radius: 4px;
 }
 
 .container-images__infos {
@@ -76,7 +76,7 @@
   padding: 2rem;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: $border-radius;
+  border-radius: 4px;
 }
 
 .container-filtre__infos {
@@ -110,11 +110,11 @@ label {
   padding-top: 0.5rem;
   padding-bottom: 2rem;
 
-  border-radius: $border-radius;
-  border: 2px solid rgba($white, 0.3);
+  border-radius: 4px;
+  border: 2px solid rgba(white, 0.3);
   background-color: transparent;
 
-  color: $white;
+  color: white;
 }
 
 label.triage {
@@ -126,23 +126,23 @@ label.triage {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 
-  border-radius: $border-radius;
-  border: 2px solid rgba($white, 0.3);
+  border-radius: 4px;
+  border: 2px solid rgba(white, 0.3);
   background-color: transparent;
 
-  color: $white;
+  color: white;
 }
 
 label:hover {
-  background-color: rgba($white, 0.3);
+  background-color: rgba(white, 0.3);
 }
 
 label:target {
-  background-color: rgba($white, 0.3);
+  background-color: rgba(white, 0.3);
 }
 
 input[type="radio"]:checked + label {
-  background-color: rgba($white, 0.3);
+  background-color: rgba(white, 0.3);
 }
 
 @media (max-width: 900px) {

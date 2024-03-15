@@ -57,15 +57,27 @@
   position: absolute;
   bottom: 0%;
   padding: 3rem;
+  z-index: 1;
 }
 
 .hero__line {
   bottom: 0;
   width: 100%;
-  border-bottom: 1px solid rgba($white, 0.1);
+  border-bottom: 1px solid rgba(white, 0.1);
   position: absolute;
 }
 
 rect {
-  fill: $white;
+  fill: white;
+}
+
+.openHamburger {
+  display: flex;
+  padding: 3rem;
+}
+
+.openHamburger__div {
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
 }

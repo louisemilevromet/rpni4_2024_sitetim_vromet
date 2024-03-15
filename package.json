@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/louisemilevromet/rpni4_2024_sitetim_vromet#readme",
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "request": "^2.88.2"
   }
 }

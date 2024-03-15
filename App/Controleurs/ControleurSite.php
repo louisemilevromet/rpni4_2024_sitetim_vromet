@@ -6,7 +6,7 @@ namespace App\Controleurs;
 
 use App\App;
 use App\Modeles\Diplomes;
-use App\Modeles\Projets;
+use App\Modeles\Temoignages;
 use App\Modeles\Textes;
 
 class ControleurSite
@@ -27,6 +27,10 @@ class ControleurSite
         $texteId23 = Textes::trouverParId(23)->getTexte();
         $axes = Textes::trouverAxes();
 
+        // Témoingnage
+        $temoignages = Temoignages::trouverTroisAleatoires();
+
+
         $tDonnes = array(
             "titrePage" => "techniques d'intégration multimédia",
             "texteId8" => $texteId8,
@@ -37,7 +41,8 @@ class ControleurSite
             "texteId21" => $texteId21,
             "texteId22" => $texteId22,
             "texteId23" => $texteId23,
-            "axes" => $axes
+            "axes" => $axes,
+            "temoignages" => $temoignages
         );
         echo App::getBlade()->run('accueil.index', $tDonnes);
     }
@@ -58,6 +63,7 @@ class ControleurSite
             "texteId24" => $texteId24,
             "texteId25" => $texteId25,
             "texteId26" => $texteId26
+
         );
         echo App::getBlade()->run('stages.index', $tDonnes);
     }

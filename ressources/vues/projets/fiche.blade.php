@@ -1,4 +1,5 @@
 @extends('gabarit')
+<script type="module" src="./liaisons/js/projets.js" defer></script>
 
 @section('contenu')
     <div class="container-entete"

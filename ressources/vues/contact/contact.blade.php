@@ -3,7 +3,7 @@
 @section('contenu')
     <div class="container">
 
-        <form action="index.php?controleur=contact&action=inserer" method="POST" class="form" id="form">
+        <form action="index.php?controleur=contact&action=inserer" method="POST" class="form-contact" id="form">
             @if (isset($tValidation['retroactions']) && $tValidation['retroactions'] !== '')
                 <div class="container-retro_message">
                     <span class="retro__message-correct">{{ $tValidation['retroactions'] }}</span>

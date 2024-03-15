@@ -10,29 +10,29 @@ select:focus-visible {
 input,
 select,
 textarea {
-  color: $white;
+  color: white;
 }
 
 input,
 select {
-  background-color: rgba($white, 0.3);
+  background-color: rgba(white, 0.3);
   border-style: none;
-  border-radius: $border-radius;
+  border-radius: 4px;
   height: 2.5rem;
   padding-left: 1rem;
 }
 
 span {
   display: contents;
-  color: rgba($red, 0.8);
+  color: rgba(red, 0.8);
 }
 
 span.retro__message-correct {
-  color: $green;
+  color: #42ff00;
 }
 
 input.erreur {
-  background-color: rgba($red, 0.2);
+  background-color: rgba(red, 0.2);
 }
 
 // .container-erreur_message {
@@ -48,7 +48,7 @@ input.erreur {
 // }
 
 .container-retro_message {
-  background-color: rgba($green, 0.2);
+  background-color: rgba(#42ff00, 0.2);
   border-style: none;
   border-radius: 4px;
   height: 2.5rem;
@@ -71,7 +71,7 @@ input.erreur {
   justify-content: space-between;
 }
 
-form {
+.form-contact {
   width: 80%;
   max-width: 800px;
   display: flex;
@@ -160,22 +160,6 @@ form {
 
 .nom__message,
 .courriel__message erreur {
-  color: $red;
+  color: red;
   font-size: 0.8rem;
 }
-
-// label.none {
-//   width: fit-content;
-//   height: 2.5rem;
-//   padding-left: 0;
-//   padding-right: 0;
-//   padding-bottom: 0;
-//   border-radius: 0;
-//   border: none;
-//   background-color: none;
-//   color: #ffffff;
-// }
-
-// label.none:hover {
-//   background-color: none;
-// }

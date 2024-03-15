@@ -1,8 +1,6 @@
     <div class="footer">
         <div class="container-footer">
-            <div class="container-footer__tim">
-                <img src="./liaisons/images/tim.png" alt="Logo de TIM" class="container-footer__tim-img">
-            </div>
+            <img src="./liaisons/images/tim.png" alt="Logo de TIM" class="container-footer__tim-img">
             <div class="container-footer__meta">
                 <div class="container-footer__meta-links">
                     <ul class="ul-footer">
@@ -45,11 +43,12 @@
                     </a>
                 </div>
                 <div class="container-footer__meta-img">
-                    <img class="logo-cepeg" src="./liaisons/images/Logocegep.png" alt="Logo du Cégep de Sainte-Foy">
+                    <a onclick="openLinks('https://www.csfoy.ca/accueil')" class="a-none"><img class="logo-cepeg"
+                            src="./liaisons/images/Logocegep.png" alt="Logo du Cégep de Sainte-Foy"></a>
                 </div>
             </div>
         </div>
-        <div class="footer__line" bis_skin_checked="1">
+        <div class="footer__line">
         </div>
         <p>
             © Réalisé par Louis-Émile Vromet

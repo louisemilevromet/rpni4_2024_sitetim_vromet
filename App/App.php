@@ -117,7 +117,6 @@ class App
                     $objControleur->diplome();
                     break;
                 default:
-                    echo 'Erreur 404 - Action invalide';
             }
         }
         if ($urlControleur === 'projets') {
@@ -129,7 +128,6 @@ class App
                 case 'fiche':
                     $objControleur->fiche();
                 default:
-                    echo 'Erreur 404 - Action invalide';
             }
         }
         if ($urlControleur === 'contact') {
@@ -142,10 +140,7 @@ class App
                     $objControleur->inserer();
                     break;
                 default:
-                    echo 'Erreur 404 - Action invalide';
             }
-        } else {
-            echo 'Erreur 404 - Controleur invalide';
         }
     }
 }

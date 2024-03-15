@@ -1,8 +1,9 @@
 const profession = document.getElementById("profession-svg");
 const infoProfession = document.getElementById("profession-info");
+const divProf = document.getElementById("div-prof");
 let estInvicibleProfession = true;
 
-profession.addEventListener("click", () => {
+divProf.addEventListener("click", () => {
   if (estInvicibleProfession) {
     profession.style.rotate = "180deg";
     infoProfession.style.display = "flex";
@@ -18,9 +19,10 @@ profession.addEventListener("click", () => {
 
 const uni = document.getElementById("uni-svg");
 const infoUni = document.getElementById("uni-info");
+const divUni = document.getElementById("div-uni");
 let estInvicibleUni = true;
 
-uni.addEventListener("click", () => {
+divUni.addEventListener("click", () => {
   if (estInvicibleUni) {
     uni.style.rotate = "180deg";
     infoUni.style.display = "flex";
@@ -36,9 +38,10 @@ uni.addEventListener("click", () => {
 
 const type = document.getElementById("type-svg");
 const infoType = document.getElementById("type-info");
+const divType = document.getElementById("div-type");
 let estInvicibleType = true;
 
-type.addEventListener("click", () => {
+divType.addEventListener("click", () => {
   if (estInvicibleType) {
     type.style.rotate = "180deg";
     infoType.style.display = "flex";

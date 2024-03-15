@@ -1,5 +1,5 @@
 <?php $_shouldextend[1]=1; ?>
-
+<script type="module" src="./liaisons/js/validation.js" defer></script>
 <?php $this->startSection('contenu'); ?>
  <?php echo $this->runChild('contact.contact'); ?>
 <?php $this->stopSection(); ?>

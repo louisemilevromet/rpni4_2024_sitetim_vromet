@@ -19,22 +19,32 @@
  */
 /****** Librairies ******/
 /** Général **/
-/* Couleurs de base */
-/* Autres couleurs */
-/** Points de rupture **/
+:root {
+  /* Couleurs de base */
+  --white: #ffffff;
+  --black: #141414;
+  --grey: #545454;
+  --red: #ec1e1e;
+  --green: #42ff00;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html,
 body {
-  background-color: #141414;
+  background-color: black;
   width: 100%;
   background-image: url("../images/Background.png");
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+main {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 a {
@@ -51,7 +61,7 @@ svg {
 }
 
 svg:hover path {
-  fill: #ffffff;
+  fill: white;
 }
 
 .svg__no-click {
@@ -65,8 +75,6 @@ path {
 .container {
   display: flex;
   justify-content: center;
-  padding-left: 10%;
-  padding-right: 10%;
   flex-direction: column;
   align-items: center;
 }
@@ -76,16 +84,12 @@ path {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
 }
 
 .container-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-left: 3rem;
-  margin-right: 3rem;
   padding-bottom: 14rem;
   gap: 3rem;
 }
@@ -117,6 +121,14 @@ video {
   height: fit-content;
 }
 
+@media (min-width: 768px) {
+  * {
+    cursor: none;
+  }
+  a {
+    cursor: none;
+  }
+}
 /** Cursor **/
 .cursor-dot {
   width: 0.5rem;
@@ -147,13 +159,13 @@ video {
   width: 0.8rem;
   height: 0.8rem;
   background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid #545454;
+  border: 1px solid grey;
 }
 
 .cursor-outline-hover {
   width: 1rem;
   height: 1rem;
-  border: 2px solid #ffffff;
+  border: 2px solid white;
 }
 
 /** Hero **/
@@ -217,6 +229,7 @@ video {
   position: absolute;
   bottom: 0%;
   padding: 3rem;
+  z-index: 1;
 }
 
 .hero__line {
@@ -227,7 +240,18 @@ video {
 }
 
 rect {
-  fill: #ffffff;
+  fill: white;
+}
+
+.openHamburger {
+  display: flex;
+  padding: 3rem;
+}
+
+.openHamburger__div {
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
 }
 
 /** Accueil **/
@@ -278,10 +302,38 @@ rect {
   video {
     width: 75%;
   }
-  img {
-    width: 75% !important;
+  .h3-accueil {
+    width: 100% !important;
   }
 }
+.container-temoignages {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-bottom: 14rem;
+}
+
+.container-temoignage {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 24rem;
+  padding: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.container-temoignage__texte {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.h3-accueil {
+  width: 45%;
+}
+
 /** Form **/
 fieldset {
   border: none;
@@ -295,7 +347,7 @@ select:focus-visible {
 input,
 select,
 textarea {
-  color: #ffffff;
+  color: white;
 }
 
 input,
@@ -309,7 +361,7 @@ select {
 
 span {
   display: contents;
-  color: rgba(236, 30, 30, 0.8);
+  color: rgba(255, 0, 0, 0.8);
 }
 
 span.retro__message-correct {
@@ -317,7 +369,7 @@ span.retro__message-correct {
 }
 
 input.erreur {
-  background-color: rgba(236, 30, 30, 0.2);
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 .container-retro_message {
@@ -344,7 +396,7 @@ input.erreur {
   justify-content: space-between;
 }
 
-form {
+.form-contact {
   width: 80%;
   max-width: 800px;
   display: flex;
@@ -433,7 +485,7 @@ form {
 
 .nom__message,
 .courriel__message erreur {
-  color: #ec1e1e;
+  color: red;
   font-size: 0.8rem;
 }
 
@@ -451,7 +503,7 @@ form {
   position: sticky;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: 3rem;
 }
 
 .container-filtre__triage {
@@ -552,7 +604,7 @@ label {
   border-radius: 4px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   background-color: transparent;
-  color: #ffffff;
+  color: white;
 }
 
 label.triage {
@@ -566,7 +618,7 @@ label.triage {
   border-radius: 4px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   background-color: transparent;
-  color: #ffffff;
+  color: white;
 }
 
 label:hover {
@@ -730,7 +782,7 @@ input[type=radio]:checked + label {
 .line {
   bottom: 0;
   width: 100%;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid white;
 }
 
 /** Footer **/
@@ -818,15 +870,26 @@ input[type=radio]:checked + label {
 }
 /**** UTILITAIRES ****/
 /** Variables **/
-/* Couleurs de base */
-/* Autres couleurs */
-/** Points de rupture **/
-/** Mixins **/
+:root {
+  /* Couleurs de base */
+  --white: #ffffff;
+  --black: #141414;
+  --grey: #545454;
+  --red: #ec1e1e;
+  --green: #42ff00;
+}
+
 /****** BASE ******/
 /** Typographie **/
-/* Couleurs de base */
-/* Autres couleurs */
-/** Points de rupture **/
+:root {
+  /* Couleurs de base */
+  --white: #ffffff;
+  --black: #141414;
+  --grey: #545454;
+  --red: #ec1e1e;
+  --green: #42ff00;
+}
+
 @font-face {
   font-family: "Satochi";
   src: url("../public/font/Satoshi-Regular.otf") format("truetype");
@@ -837,16 +900,29 @@ input[type=radio]:checked + label {
 }
 body {
   font-family: "Satochi", sans-serif;
-  color: #ffffff;
+  color: var(--white);
 }
 
 h1 {
   font-size: clamp(2.5rem, 8vw, 11rem);
   text-transform: uppercase;
+  animation-name: fade-up;
+  animation-duration: 1800ms;
+  animation-timing-function: ease-out;
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 h2 {
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2rem, 6vw, 5rem);
 }
 
 h3 {
@@ -878,7 +954,6 @@ a:hover {
   --_p: 100%;
 }
 
-/** Hyperliens **/
 /** Boutons **/
 button {
   height: 2.5rem;
@@ -889,7 +964,7 @@ button {
   border-radius: 4px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   background-color: transparent;
-  color: #ffffff;
+  color: white;
 }
 
 button:hover {

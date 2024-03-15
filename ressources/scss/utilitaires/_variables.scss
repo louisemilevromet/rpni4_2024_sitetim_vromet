@@ -1,13 +1,8 @@
-/* Couleurs de base */
-$white: #ffffff;
-$black: #141414;
-$grey: #545454;
-$red: #ec1e1e;
-$green: #42ff00;
-
-/* Autres couleurs */
-
-/** Points de rupture **/
-
-// border-radius
-$border-radius: 4px;
+:root {
+  /* Couleurs de base */
+  --white: #ffffff;
+  --black: #141414;
+  --grey: #545454;
+  --red: #ec1e1e;
+  --green: #42ff00;
+}

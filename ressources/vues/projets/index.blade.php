@@ -1,8 +1,11 @@
+<script src="./liaisons/js/links.js" defer></script>
+<script type="module" src="./liaisons/js/projets.js" defer></script>
+
 @extends('gabarit')
 
 @section('contenu')
     <div class="container-projets">
-        <form action="index.php?" method="get">
+        <form action="index.php?" method="get" class="form-projets">
 
             <input type="hidden" value="projets" name="controleur">
             <input type="hidden" value="index" name="action">
